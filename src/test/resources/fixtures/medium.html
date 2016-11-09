@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html>
+<head prefix=
+              "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# medium-com: http://ogp.me/ns/fb/medium-com#">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Everything you ever wanted to know about unfurling but were afraid
+        to ask /or/ How to make your… — Slack Platform Blog — Medium</title>
+    <link href=
+                  "https://medium.com/slack-developer-blog/everything-you-ever-wanted-to-know-about-unfurling-but-were-afraid-to-ask-or-how-to-make-your-e64b4bb9254"
+          rel="canonical">
+    <meta content=
+                  "Everything you ever wanted to know about unfurling but were afraid to ask /or/ How to make your… — Slack Platform Blog"
+          name="title">
+    <meta content="always" name="referrer">
+    <meta content=
+                  "Let’s start with the most obvious question first. This is what an “unfurl” is:"
+          name="description">
+    <meta content="Medium" property="og:site_name">
+    <meta content=
+                  "Everything you ever wanted to know about unfurling but were afraid to ask /or/ How to make your… — Slack Platform Blog"
+          property="og:title">
+    <meta content=
+                  "https://medium.com/slack-developer-blog/everything-you-ever-wanted-to-know-about-unfurling-but-were-afraid-to-ask-or-how-to-make-your-e64b4bb9254"
+          property="og:url">
+    <meta content=
+                  "https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png"
+          property="og:image">
+    <meta content="542599432471018" property="fb:app_id">
+    <meta content=
+                  "Let’s start with the most obvious question first. This is what an “unfurl” is:"
+          property="og:description">
+    <meta content="@Medium" name="twitter:site">
+    <meta content=
+                  "https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png"
+          name="twitter:image:src">
+    <link href="https://plus.google.com/103654360130207659246" rel="publisher">
+    <link href="https://medium.com/@mathowie" rel="author">
+    <meta content="Matt Haughey" name="author">
+    <meta content="article" property="og:type">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="https://www.facebook.com/medium" property=
+            "article:publisher">
+    <meta content="https://medium.com/@mathowie" property="article:author">
+    <meta content="noauto" property="fb:smart_publish:robots">
+    <meta content="2015-11-24T21:33:25.196Z" property="article:published_time">
+    <meta content="@mathowie" name="twitter:creator">
+    <meta name="twitter:label1">
+    <meta name="twitter:data1">
+    <meta content="Medium" name="twitter:app:name:iphone">
+    <meta content="828256236" name="twitter:app:id:iphone">
+    <meta content="medium://p/e64b4bb9254" name="twitter:app:url:iphone">
+    <meta content="Medium" property="al:ios:app_name">
+    <meta content="828256236" property="al:ios:app_store_id">
+    <meta content="com.medium.reader" property="al:android:package">
+    <meta content="Medium" property="al:android:app_name">
+    <meta content="medium://p/e64b4bb9254" property="al:ios:url">
+    <meta content="medium://p/e64b4bb9254" property="al:android:url">
+    <meta content=
+                  "https://medium.com/slack-developer-blog/everything-you-ever-wanted-to-know-about-unfurling-but-were-afraid-to-ask-or-how-to-make-your-e64b4bb9254"
+          property="al:web:url">
+    <link href="android-app://com.medium.reader/https/medium.com/p/e64b4bb9254"
+          rel="alternate">
+    <meta content="#000000" name="theme-color">
+    <link href=
+                  "https://cdn-static-1.medium.com/_/fp/css/fonts-base.by5Oi_VbnwEIvhnWIsuUjA.css"
+          rel="stylesheet" type="text/css">
+    <link href=
+                  "https://cdn-static-1.medium.com/_/fp/css/main-base.qHqvckRAlOeFLKpxn_Cc2Q.css"
+          rel="stylesheet">
+    <link class="js-favicon is-default" href=
+            "https://cdn-static-1.medium.com/_/fp/icons/favicon-medium.TAS6uQ-Y7kcKgi0xjcYHXw.ico"
+          rel="shortcut icon">
+    <link href="/apple-touch-icon-ipad-retina.png" rel="apple-touch-icon"
+          sizes="152x152">
+    <link href="/apple-touch-icon-iphone-retina.png" rel="apple-touch-icon"
+          sizes="120x120">
+    <link href="/apple-touch-ipad.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon">
+    <link color="#171717" href="/favicon.svg" rel="mask-icon">
+</head>
+
+<body class=
+              " postShowScreen browser-chrome os-mac is-withMagicUnderlines is-noJs"
+      itemscope itemtype="http://schema.org/Article">
+
+<div class="site-main" id="container">
+    <div class="butterBar butterBar--error">
+    </div>
+
+
+    <div class="surface">
+        <div class="screenContent" id="prerendered">
+            <canvas class="canvas-renderer">
+            </canvas>
+
+
+            <nav class=
+                         "metabar u-clearfix js-metabar metabar--top metabar--postArticle">
+                <div class="metabar-inner">
+                    <div class=
+                                 "metabar-block metabar-block--left u-floatLeft">
+                        <a class="siteNav-logo" data-log-event="home" href=
+                                "https://medium.com/"><svg class=
+                                                                   "svgIcon svgIcon--logoNew svgIcon-size--45px"
+                                                           height="45" viewbox="0 0 45 45" width="45">
+                            <use class="svgIcon-use svgIcon-use--part0"
+                                 xlink:href="#svg-logoNew-45px-p0">
+                            </use>
+
+                            <use class="svgIcon-use svgIcon-use--part1"
+                                 xlink:href="#svg-logoNew-45px-p1">
+                            </use>
+
+                            <use class="svgIcon-use svgIcon-use--part2"
+                                 xlink:href="#svg-logoNew-45px-p2">
+                            </use>
+
+                            <use class="svgIcon-use svgIcon-use--part3"
+                                 xlink:href="#svg-logoNew-45px-p3">
+                            </use></svg><span class=
+                                                      "u-textScreenReader">Homepage</span></a><span class="metabar-divider metabar-divider--first u-showOnMobile"></span><span class="postMetaInline postMetaInline--avatar u-showOnMobile"><a aria-label="Go to Slack Platform Blog"
+                                                                                                                                                                                                                                               class=
+                                                                                                                                                                                                                                                       "link avatar avatar--roundedRectangle u-color--link"
+                                                                                                                                                                                                                                               data-action-source=
+                                                                                                                                                                                                                                                       "avatarTopMetabar-4662a02c1bde-d76c0605b922" href=
+                                                                                                                                                                                                                                                       "https://medium.com/slack-developer-blog?source=avatarTopMetabar-4662a02c1bde-d76c0605b922"
+                                                                                                                                                                                                                                               title="Go to Slack Platform Blog"><img alt=
+                                                                                                                                                                                                                                                                                              "Slack Platform Blog" class=
+                                                                                                                                                                                                                                                                                              "avatar-image avatar-image--icon" src=
+                                                                                                                                                                                                                                                                                              "https://cdn-images-1.medium.com/fit/c/64/64/1*CJXYjBLEdR2-fv3ssgum0g.jpeg"></a></span>
+                    </div>
+
+
+                    <div class="metabar-block metabar-block--center">
+                            <span class=
+                                          "postMetaInline postMetaInline--avatar"><a aria-label="Go to Slack Platform Blog"
+                                                                                     class=
+                                                                                             "link avatar avatar--roundedRectangle u-color--link"
+                                                                                     data-action-source=
+                                                                                             "logoAvatar-4662a02c1bde-d76c0605b922" href=
+                                                                                             "https://medium.com/slack-developer-blog?source=logoAvatar-4662a02c1bde-d76c0605b922"
+                                                                                     title="Go to Slack Platform Blog"><img alt=
+                                                                                                                                    "Slack Platform Blog" class=
+                                                                                                                                    "avatar-image avatar-image--icon" src=
+                                                                                                                                    "https://cdn-images-1.medium.com/fit/c/64/64/1*CJXYjBLEdR2-fv3ssgum0g.jpeg"></a></span><a class="metabar-logoWrapper js-logCollection u-xs-hide"
+                                                                                                                                                                                                                              href=
+                                                                                                                                                                                                                                      "https://medium.com/slack-developer-blog?source=logo-4662a02c1bde-d76c0605b922">
+                        <h3 class="metabar-logo u-textAlignLeft">
+                            <span class=
+                                          "metabar-collectionNamePretext">Published
+                            in</span>Slack Platform Blog</h3></a>
+                    </div>
+
+
+                    <div class=
+                                 "metabar-block metabar-block--right u-floatRight">
+                        <div class="buttonSet">
+                        </div>
+                        <label class=
+                                       "inputGroup u-sm-hide metabar-predictiveSearch u-color--placeholderNormal"
+                               title="Search"><svg class=
+                                                           "svgIcon svgIcon--search svgIcon-size--25px u-color--iconNormal"
+                                                   height="25" viewbox="0 0 25 25" width="25">
+                            <use class="svgIcon-use svgIcon-use--part0"
+                                 xlink:href="#svg-search-25px-p0">
+                            </use></svg><input class=
+                                                       "js-predictiveSearchInput textInput textInput--rounded textInput--darkText u-color--textNormal textInput--transparent u-color--borderNormal"
+                                               data-collection-id="d76c0605b922" placeholder=
+                                                       "Search" type="search"></label>
+
+                        <div class="buttonSet">
+                            <a aria-label="Search" class=
+                                    "button button--circle u-showOnTablet is-inSiteNavBar button--withChrome u-color--buttonNormal button--withIcon"
+                               href=
+                                       "https://medium.com/slack-developer-blog/search"
+                               title="Search"><span class=
+                                                            "button-defaultState"><svg class=
+                                                                                               "svgIcon svgIcon--search svgIcon-size--25px"
+                                                                                       height="25" viewbox="0 0 25 25" width="25">
+                                <use class="svgIcon-use svgIcon-use--part0"
+                                     xlink:href="#svg-search-25px-p0">
+                                </use></svg></span></a><button aria-label=
+                                                                       "Notifications" class=
+                                                                       "button button--circle button--withChrome u-color--buttonNormal button--withIcon button--activity is-inSiteNavBar js-notificationsButton button--withSvgIcon"
+                                                               data-action="open-notifications" title=
+                                                                       "Notifications"><svg class=
+                                                                                                    "svgIcon svgIcon--bell svgIcon-size--25px"
+                                                                                            height="25" viewbox="0 0 25 25" width="25">
+                            <use class="svgIcon-use svgIcon-use--part0"
+                                 xlink:href="#svg-bell-25px-p0">
+                            </use></svg></button><button aria-haspopup=
+                                                                 "true" class=
+                                                                 "button button--circle button--borderless button--boxShadowBorder button--withChrome u-color--buttonNormal is-inSiteNavBar js-userActions"
+                                                         data-action="open-userActions">
+                            <div class="avatar"><img alt="Drew Stephens"
+                                                     class="avatar-image avatar-image--smaller" src=
+                                                             "https://cdn-images-1.medium.com/fit/c/80/80/1*orcQ4qLFIOV9i6wgoPL6jQ.jpeg">
+                            </div></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="postActionsBar js-postActionsBar">
+                <div class="postActionsBar-container container u-size740">
+                    <div class=
+                                 "postActionsBar-content row js-postActionsBarContent">
+                        <div class="postActions col u-xs-size12of12">
+                            <div class=
+                                         "u-floatLeft buttonSet buttonSet--withLabels">
+                                <div class="buttonSet-inner">
+                                    <div class="js-actionRecommend"
+                                         data-post-id="e64b4bb9254" data-size=
+                                                 "29px">
+                                        <button aria-label=
+                                                        "Recommend to share this article with your followers and let the author know you liked it"
+                                                class=
+                                                        "button button--primary button--large button--chromeless u-accentColor--buttonNormal button--withIcon u-accentColor--iconLight button--withSvgIcon"
+                                                data-action="upvote"
+                                                data-action-value="e64b4bb9254"
+                                                title=
+                                                        "Recommend to share this article with your followers and let the author know you liked it">
+                                            <span class=
+                                                          "button-defaultState"><svg class=
+                                                                                             "svgIcon svgIcon--heart svgIcon-size--29px"
+                                                                                     height="29" viewbox="0 0 29 29"
+                                                                                     width="29">
+                                            <use class=
+                                                         "svgIcon-use svgIcon-use--part0"
+                                                 xlink:href="#svg-heart-29px-p0">
+                                            </use></svg></span><span class=
+                                                                             "button-activeState"><svg class=
+                                                                                                               "svgIcon svgIcon--heartFilled svgIcon-size--29px"
+                                                                                                       height="29" viewbox="0 0 29 29"
+                                                                                                       width="29">
+                                            <use class=
+                                                         "svgIcon-use svgIcon-use--part0"
+                                                 xlink:href=
+                                                         "#svg-heartFilled-29px-p0">
+                                            </use></svg></span></button><button class="button button--chromeless u-color--buttonNormal"
+                                                                                data-action="show-recommends"
+                                                                                data-action-value=
+                                                                                        "e64b4bb9254">181</button>
+                                    </div>
+                                </div>
+
+
+                                <div class="buttonSet-inner">
+                                    <button class=
+                                                    "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon button--withSvgIcon"
+                                            data-action="respond"><svg class=
+                                                                               "svgIcon svgIcon--response svgIcon-size--29px"
+                                                                       height="29" viewbox="0 0 29 29" width=
+                                                                               "29">
+                                        <use class=
+                                                     "svgIcon-use svgIcon-use--part0"
+                                             xlink:href="#svg-response-29px-p0">
+                                        </use></svg></button><button class=
+                                                                             "button button--chromeless u-color--buttonNormal"
+                                                                     data-action=
+                                                                             "scroll-to-responses">15</button>
+                                </div>
+                            </div>
+
+
+                            <div class="u-floatRight buttonSet">
+                                <div class="buttonSet-inner">
+                                    <button aria-label=
+                                                    "Share this story on Twitter or Facebook"
+                                            class=
+                                                    "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon button--withSvgIcon"
+                                            data-action="show-share-popover"
+                                            data-action-source="post_actions_bar"
+                                            title=
+                                                    "Share this story on Twitter or Facebook">
+                                        <svg class=
+                                                     "svgIcon svgIcon--share svgIcon-size--29px"
+                                             height="29" viewbox="0 0 29 29" width=
+                                                     "29">
+                                            <use class=
+                                                         "svgIcon-use svgIcon-use--part0"
+                                                 xlink:href="#svg-share-29px-p0">
+                                            </use></svg></button>
+                                </div>
+
+
+                                <div class="buttonSet-inner">
+                                    <button aria-label=
+                                                    "Bookmark this story to read later"
+                                            class=
+                                                    "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon button--bookmark js-bookmarkButton button--withSvgIcon"
+                                            data-action="add-to-bookmarks"
+                                            data-action-value="e64b4bb9254" title=
+                                                    "Bookmark this story to read later"><span class="button-defaultState">
+                                        <svg class=
+                                                     "svgIcon svgIcon--bookmark svgIcon-size--29px"
+                                             height="29" viewbox="0 0 29 29" width=
+                                                     "29">
+                                        <use class=
+                                                     "svgIcon-use svgIcon-use--part0"
+                                             xlink:href="#svg-bookmark-29px-p0">
+                                        </use></svg></span><span class=
+                                                                         "button-activeState"><svg class=
+                                                                                                           "svgIcon svgIcon--bookmarkFilled svgIcon-size--29px"
+                                                                                                   height="29" viewbox="0 0 29 29" width=
+                                                                                                           "29">
+                                        <use class=
+                                                     "svgIcon-use svgIcon-use--part0"
+                                             xlink:href=
+                                                     "#svg-bookmarkFilled-29px-p0">
+                                        </use></svg></span></button>
+                                </div>
+
+
+                                <div class="buttonSet-separator">
+                                </div>
+
+
+                                <div class="buttonSet-inner">
+                                    <a class=
+                                               "link avatar avatar--inline u-color--link"
+                                       data-action="show-user-card"
+                                       data-action-type="hover" data-user-id=
+                                               "1445046f3fe9" dir="auto" href=
+                                               "https://medium.com/@mathowie"><img alt="Go to the profile of Matt Haughey"
+                                                                                   class=
+                                                                                           "avatar-image avatar-image--micro" src=
+                                                                                           "https://cdn-images-1.medium.com/fit/c/48/48/0*fT3yd1v6MXdubdY1.jpeg"><span class="avatar-text">Matt
+                                        Haughey</span></a><span class=
+                                                                        "u-xs-hide"><span class=
+                                                                                                  "middotDivider"></span><span class=
+                                                                                                                                       "followState js-followState"
+                                                                                                                               data-user-id=
+                                                                                                                                       "1445046f3fe9"><button class=
+                                                                                                                                                                      "button button--chromeless u-noUserSelect u-color--buttonNormal button--withHover button--unblock js-unblockButton"
+                                                                                                                                                              data-action="toggle-block-user"
+                                                                                                                                                              data-action-source="post_actions_bar"
+                                                                                                                                                              data-action-value=
+                                                                                                                                                                      "1445046f3fe9"><span class=
+                                                                                                                                                                                                   "followState js-followState"
+                                                                                                                                                                                           data-user-id=
+                                                                                                                                                                                                   "1445046f3fe9"><span class="button-label button-defaultState">Blocked</span><span class="button-label button-hoverState">Unblock</span></span><button aria-label="Follow to get new stories and recommendations from this author"
+                                                                                                                                                                                                                                                                                                                                                         class=
+                                                                                                                                                                                                                                                                                                                                                                 "button button--primary button--chromeless u-noUserSelect u-accentColor--buttonNormal button--follow js-followButton"
+                                                                                                                                                                                                                                                                                                                                                         data-action="toggle-subscribe-user"
+                                                                                                                                                                                                                                                                                                                                                         data-action-source=
+                                                                                                                                                                                                                                                                                                                                                                 "post_actions_bar_follow"
+                                                                                                                                                                                                                                                                                                                                                         data-action-value="1445046f3fe9"
+                                                                                                                                                                                                                                                                                                                                                         data-subscribe-source=
+                                                                                                                                                                                                                                                                                                                                                                 "post_actions_bar" title=
+                                                                                                                                                                                                                                                                                                                                                                 "Follow to get new stories and recommendations from this author"><span class="button-label button-defaultState js-buttonLabel">Follow</span><span class="button-label button-activeState">Following</span></button></button></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <article class=
+                             "u-sizeViewHeightMin100 postArticle postArticle--full is-withAccentColors"
+                     lang="en">
+                <header class="container is-underMetabar u-size740">
+                    <div class="row u-showOnMobile">
+                        <div class="col u-xs-size12of12 u-xs-bottom10">
+                            <div class="postMetaHeader-socialProof">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class=
+                                 "postMetaHeader row u-xs-top10 u-xs-bottom10">
+                        <div class="col u-sm-size5of12">
+                            <div class="u-floatLeft">
+                                <div class="postMetaInline-avatar">
+                                    <a class="link avatar u-color--link"
+                                       data-action="show-user-card"
+                                       data-action-type="hover" data-user-id=
+                                               "1445046f3fe9" dir="auto" href=
+                                               "https://medium.com/@mathowie"><img alt="Go to the profile of Matt Haughey"
+                                                                                   class=
+                                                                                           "avatar-image u-xs-size32x32 u-sm-size36x36"
+                                                                                   src=
+                                                                                           "https://cdn-images-1.medium.com/fit/c/72/72/0*fT3yd1v6MXdubdY1.jpeg"></a>
+                                </div>
+
+
+                                <div class="postMetaInline-feedSummary">
+                                    <a class=
+                                               "link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-color--link"
+                                       data-action="show-user-card"
+                                       data-action-type="hover" data-user-id=
+                                               "1445046f3fe9" dir="auto" href=
+                                               "https://medium.com/@mathowie">Matt
+                                        Haughey</a><span class=
+                                                                 "postMetaInline postMetaInline--supplemental">Nov
+                                        24, 2015<span class=
+                                                              "middotDivider"></span><span class=
+                                                                                                   "readingTime">10 min read</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col u-sm-size7of12 u-xs-hide">
+                            <div class="u-floatRight u-textAlignRight">
+                                <div class="postMetaHeader-socialProof">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+
+                <main class=
+                              "postArticle-content js-postField js-notesSource" role=
+                              "main">
+                    <section class=" section--body section--first">
+                        <div class="section-divider layoutSingleColumn">
+                            <hr class="section-divider">
+                        </div>
+
+
+                        <div class="section-content">
+                            <div class="section-inner layoutSingleColumn">
+                                <h3 class="graf--h3 graf--first" id="f06d">
+                                    Everything you ever wanted to know about
+                                    unfurling but were afraid to ask /or/ How
+                                    to make your site previews look amazing in
+                                    Slack</h3>
+
+
+                                <figure class="graf--figure graf-after--h3"
+                                        id="3d33">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 1029px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 147.10000000000002%;">
+
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*QOMaDLcO8rExD0ctBV3BWg.png"
+                                             data-height="2000" data-image-id=
+                                                     "1*QOMaDLcO8rExD0ctBV3BWg.png"
+                                             data-width="1360">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*QOMaDLcO8rExD0ctBV3BWg.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "199c">Let’s start with the most obvious
+                                    question first. This is what an “unfurl”
+                                    is:</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="6dcd">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 174px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 24.9%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*WGQU3gd8vRC9tF7DJslaRQ.png"
+                                             data-height="286" data-image-id=
+                                                     "1*WGQU3gd8vRC9tF7DJslaRQ.png"
+                                             data-width="1148">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*WGQU3gd8vRC9tF7DJslaRQ.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*WGQU3gd8vRC9tF7DJslaRQ.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*WGQU3gd8vRC9tF7DJslaRQ.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "d7a5">Those handy little previews you see
+                                    when you paste a link into a Slack message
+                                    are what we refer to as <strong class=
+                                                                            "markup--strong markup--p-strong"><em class="markup--em markup--p-em">
+                                        unfurling</em></strong> internally at Slack
+                                    (and also <a class=
+                                                         "markup--anchor markup--p-anchor"
+                                                 data-href="https://api.slack.com/docs/unfurling"
+                                                 href="https://api.slack.com/docs/unfurling"
+                                                 rel="nofollow">in Slack’s API
+                                        documentation</a>). While it may sound like
+                                    a made up bit of tech jargon, it’s an
+                                    actual word that means “<em class=
+                                                                        "markup--em markup--p-em">to spread out
+                                        from a rolled or folded state</em>” which
+                                    is what Slack attempts whenever it
+                                    encounters a link.</p>
+
+
+                                <p class="graf--p graf-after--p" id="e783">
+                                    Unfurled previews in Slack are handy
+                                    because they give everyone a glimpse of
+                                    what someone linked to, letting you know if
+                                    it’s helpful or not as you go about your
+                                    day processing dozens of channels and
+                                    reading hundreds of short messages. A
+                                    preview saves lots of time throughout your
+                                    day, letting you decide whether or not
+                                    something is worth reading about, or better
+                                    skipped over. They also help with search
+                                    and your own recollection of what you’ve
+                                    seen in Slack.</p>
+
+
+                                <p class="graf--p graf-after--p" id="78ca">
+                                    How the unfurl process works and how you
+                                    can make it work better for your own sites
+                                    is what I’m here to explain today. Why
+                                    don’t we jump right in with an example?</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "25a2">Go from basic unfurls to something
+                                    better</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "2b6d">Let me start by saying <a class=
+                                                                                 "markup--anchor markup--p-anchor"
+                                                                         data-href="https://swiftkey.com/en" href=
+                                                                                 "https://swiftkey.com/en" rel=
+                                                                                 "nofollow">SwiftKey</a> is a great keyboard
+                                    replacement app for Android and iOS that
+                                    everyone I know using it loves. They also
+                                    have a fun and fantastic blog that
+                                    occasionally comes up with <a class=
+                                                                          "markup--anchor markup--p-anchor"
+                                                                  data-href="https://swiftkey.com/en/united-states-emoji/"
+                                                                  href=
+                                                                          "https://swiftkey.com/en/united-states-emoji/"
+                                                                  rel="nofollow">viral posts like this
+                                        one</a>, but here’s how it looked in
+                                    Slack:</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="bb08">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 181px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 25.900000000000002%;">
+
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*2PbEavG-cPbSWSsiAPBTLg.png"
+                                             data-height="298" data-image-id=
+                                                     "1*2PbEavG-cPbSWSsiAPBTLg.png"
+                                             data-width="1152">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*2PbEavG-cPbSWSsiAPBTLg.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*2PbEavG-cPbSWSsiAPBTLg.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*2PbEavG-cPbSWSsiAPBTLg.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "1466">I don’t mean to knock the work that
+                                    SwiftKey is doing, I merely want to point
+                                    out that this unfurl isn’t as strong as it
+                                    could be. The blog post being linked has a
+                                    great graphic showing the most popular
+                                    emoji used in each US state, so an image
+                                    would be handy here. However, the text
+                                    shown is a default site/product
+                                    description. If you instead saw their blog
+                                    post summary, chances are everyone in a
+                                    channel that loved emoji would click
+                                    through to read it but in its current state
+                                    you can’t really tell what that page will
+                                    have on it.</p>
+
+
+                                <p class="graf--p graf-after--p" id="0190">
+                                    While most sites are pretty good about
+                                    unfurl previews, you will see a few each
+                                    day that have no description or a generic
+                                    short description of a site instead of
+                                    specific information about the page being
+                                    shared. On the flipside, here are a few
+                                    examples of impressive unfurls to give you
+                                    an idea of what is possible.</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="3a9a">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 252px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 36.1%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*-lQlQN7aEC_AHKlY-NEzPw.png"
+                                             data-height="414" data-image-id=
+                                                     "1*-lQlQN7aEC_AHKlY-NEzPw.png"
+                                             data-width="1148">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*-lQlQN7aEC_AHKlY-NEzPw.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*-lQlQN7aEC_AHKlY-NEzPw.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*-lQlQN7aEC_AHKlY-NEzPw.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <figure class=
+                                                "graf--figure graf-after--figure" id=
+                                                "fb13">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 269px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 38.4%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*noeihy_vqwFQrJUaAutW_g.png"
+                                             data-height="451" data-image-id=
+                                                     "1*noeihy_vqwFQrJUaAutW_g.png"
+                                             data-width="1174">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*noeihy_vqwFQrJUaAutW_g.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*noeihy_vqwFQrJUaAutW_g.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*noeihy_vqwFQrJUaAutW_g.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <figure class=
+                                                "graf--figure graf-after--figure" id=
+                                                "ba67">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 558px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 79.7%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*-qevzc48iXieLBfnKT-ebQ.png"
+                                             data-height="924" data-image-id=
+                                                     "1*-qevzc48iXieLBfnKT-ebQ.png"
+                                             data-width="1160">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*-qevzc48iXieLBfnKT-ebQ.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*-qevzc48iXieLBfnKT-ebQ.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*-qevzc48iXieLBfnKT-ebQ.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <figure class=
+                                                "graf--figure graf-after--figure" id=
+                                                "e74d">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 602px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 86%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*GQ_UNFehDOsvAjDr9IjIvQ.png"
+                                             data-height="1028" data-image-id=
+                                                     "1*GQ_UNFehDOsvAjDr9IjIvQ.png"
+                                             data-width="1196">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*GQ_UNFehDOsvAjDr9IjIvQ.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*GQ_UNFehDOsvAjDr9IjIvQ.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*GQ_UNFehDOsvAjDr9IjIvQ.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "dcb8">In these examples you can see how
+                                    e-commerce sites can show off what they are
+                                    selling, how much it costs, what the
+                                    product looks like, along with current
+                                    inventory. At <a class=
+                                                             "markup--anchor markup--p-anchor"
+                                                     data-href="http://techcrunch.com/" href=
+                                                             "http://techcrunch.com/" rel=
+                                                             "nofollow">Techcrunch</a>, they show a
+                                    thumbnail of each article’s main image
+                                    along with an extended excerpt (I clicked
+                                    to expand for the screenshot, they don’t
+                                    dominate the message space in Slack by
+                                    default). Finally, <a class=
+                                                                  "markup--anchor markup--p-anchor"
+                                                          data-href="https://www.blueapron.com/"
+                                                          href="https://www.blueapron.com/" rel=
+                                                                  "nofollow">Blue Apron</a> gets the
+                                    magazine/catalog treatment with a larger
+                                    image along with a description of their
+                                    typical products. In all these examples you
+                                    get a good idea inside of Slack of what
+                                    you’ll see if you follow the link to get
+                                    additional information.</p>
+
+
+                                <p class="graf--p graf-after--p" id="6ca7">
+                                    So let’s talk about how it all works.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "64b0">The Unfurl Landscape</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "8184">There are several ways you can embed
+                                    information about your site in the header
+                                    of your web pages, all in the service of
+                                    getting the best previews possible in Slack
+                                    (and Twitter, and Facebook, and
+                                    elsewhere).</p>
+
+
+                                <h4 class="graf--h4 graf-after--p" id=
+                                        "da6a">oEmbed</h4>
+
+
+                                <p class="graf--p graf-after--h4" id=
+                                        "4f2b"><a class=
+                                                          "markup--anchor markup--p-anchor"
+                                                  data-href="http://oembed.com/" href=
+                                                          "http://oembed.com/" rel=
+                                                          "nofollow">oEmbed</a> is a standard for
+                                    sharing metadata with other sites and
+                                    services. You basically run your own
+                                    standalone JSON server that responds to
+                                    requests by giving out up to about a dozen
+                                    parameters describing your content. It
+                                    works best for multimedia sites (photos
+                                    work best, audio and video to a lesser
+                                    extent), and was designed specifically to
+                                    furnish custom previews for other
+                                    services.</p>
+
+
+                                <p class="graf--p graf-after--p" id="d79b">
+                                    Here is an example of what oEmbed output
+                                    looks like on the image site <a class=
+                                                                            "markup--anchor markup--p-anchor"
+                                                                    data-href="http://mlkshk.com/" href=
+                                                                            "http://mlkshk.com/" rel=
+                                                                            "nofollow">MLKSHK</a>:</p>
+
+                                    <pre class="graf--pre graf-after--p" id=
+                                            "077d">
+                                    { <br>  &quot;version&quot;: &quot;1.0&quot;,<br>  <br>  &quot;type&quot;: &quot;photo&quot;,<br>  &quot;url&quot;: &quot;http://s.mlkshk.com/r/16H7E&quot;,<br>  <br>  &quot;width&quot;: 1600,<br>  &quot;height&quot;: 1293,<br>  &quot;title&quot;: &quot;Reception&quot;,<br>  &quot;author_name&quot;: &quot;Vidiot&quot;,<br>  &quot;author_url&quot;: &quot;http://mlkshk.com/user/Vidiot&quot;,<br>  &quot;provider_name&quot;: &quot;MLKSHK&quot;,<br>  <br>  &quot;provider_url&quot;: &quot;http://mlkshk.com/&quot;<br>}</pre>
+
+                                <h4 class="graf--h4 graf-after--pre" id=
+                                        "ec49">Twitter Cards</h4>
+
+
+                                <p class="graf--p graf-after--h4" id=
+                                        "d993">Twitter developed a system of
+                                    embedding metadata to customize how sites
+                                    look when previewed within tweets.
+                                    <a class="markup--anchor markup--p-anchor"
+                                       data-href=
+                                               "https://dev.twitter.com/cards/markup"
+                                       href="https://dev.twitter.com/cards/markup"
+                                       rel="nofollow">The full tag reference</a>
+                                    gives a good overview of all the different
+                                    card types and options.</p>
+
+
+                                <p class="graf--p graf-after--p" id="3055">
+                                    You can customize a thumbnail image, name,
+                                    and description in all the card types. The
+                                    <strong class=
+                                                    "markup--strong markup--p-strong">label1/data1</strong>
+                                    and <strong class=
+                                                        "markup--strong markup--p-strong">label2/data2</strong>
+                                    properties found in the <a class=
+                                                                       "markup--anchor markup--p-anchor"
+                                                               data-href="https://dev.twitter.com/cards/types/product"
+                                                               href=
+                                                                       "https://dev.twitter.com/cards/types/product"
+                                                               rel="nofollow">Product card type</a> let
+                                    you do things like the earlier ecommerce
+                                    screenshots, displaying prices, inventory,
+                                    categories, or anything you can imagine in
+                                    a nicely formatted way. Those data fields
+                                    will work on any Twitter card type in
+                                    Slack, even though Twitter itself will
+                                    ignore them in all but Product type.
+                                    Finally, if you’d like the largest possible
+                                    image preview in Slack, go with the
+                                    <a class="markup--anchor markup--p-anchor"
+                                       data-href=
+                                               "https://dev.twitter.com/cards/types/summary-large-image"
+                                       href=
+                                               "https://dev.twitter.com/cards/types/summary-large-image"
+                                       rel="nofollow">Summary Card with Large
+                                        Image type</a>.</p>
+
+
+                                <h4 class="graf--h4 graf-after--p" id=
+                                        "4499">Facebook’s Open Graph</h4>
+
+
+                                <p class="graf--p graf-after--h4" id=
+                                        "5d0a">Similar to Twitter, Facebook
+                                    developed Open Graph as a system to help
+                                    other sites customize how their content is
+                                    previewed on Facebook’s site and apps.
+                                    <a class="markup--anchor markup--p-anchor"
+                                       data-href=
+                                               "https://developers.facebook.com/docs/sharing/webmasters#markup"
+                                       href=
+                                               "https://developers.facebook.com/docs/sharing/webmasters#markup"
+                                       rel="nofollow">Their basic markup
+                                        reference</a> covers everything you’d need
+                                    for customizing your own Slack unfurl (as
+                                    well as how your sites will appear on
+                                    Facebook).</p>
+
+
+                                <h4 class="graf--h4 graf-after--p" id=
+                                        "c92a">HTML meta tags</h4>
+
+
+                                <p class="graf--p graf-after--h4" id=
+                                        "4c13">Finally, we have the <a class=
+                                                                               "markup--anchor markup--p-anchor"
+                                                                       data-href="http://www.w3schools.com/tags/tag_meta.asp"
+                                                                       href=
+                                                                               "http://www.w3schools.com/tags/tag_meta.asp"
+                                                                       rel="nofollow">HTML meta tag</a>. In
+                                    absence of any other options, Slack will
+                                    read the description attribute and display
+                                    that in an unfurl.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "d313">The Unfurl Cascade</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "9f50">Like mathematics, there’s an order
+                                    of operations to this, and it goes in the
+                                    order described below. When you paste a URL
+                                    into a Slack message and press return,
+                                    Slack’s servers fetch the URL, cache it,
+                                    and then start going through the headers of
+                                    the page. Slack reads them in this
+                                    order:</p>
+
+
+                                <ol class="postList">
+                                    <li class="graf--li graf-after--p" id=
+                                            "52e6">oEmbed server</li>
+
+
+                                    <li class="graf--li graf-after--li" id=
+                                            "b182">Twitter card tags/Facebook Open
+                                        Graph tags</li>
+
+
+                                    <li class="graf--li graf-after--li" id=
+                                            "0390">HTML meta tags</li>
+                                </ol>
+
+
+                                <p class="graf--p graf-after--li" id=
+                                        "958c">Priority is given to things higher
+                                    in the list, so if you run an oEmbed server
+                                    that gives out generic information, but
+                                    offer up rich descriptions for Twitter and
+                                    Facebook, Slack will stick to the oEmbed
+                                    server information and ignore the rest. For
+                                    Twitter cards and Facebook Open Graph tags,
+                                    whichever is first in the page’s HTML will
+                                    be used. If Slack finds nothing meeting the
+                                    first two criteria, it will look for a meta
+                                    tag with the description attribute and show
+                                    that. If nothing meeting the above criteria
+                                    can be found, no unfurl will be shown.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "aa78">From zero to hero</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "38b4">Let’s go back to the SwiftKey blog
+                                    example above. Slack shows the unfurl based
+                                    on these lines of code:</p>
+
+                                    <pre class="graf--pre graf-after--p" id=
+                                            "2d39">
+                                    &lt;meta property=&quot;og:url&quot; content=&quot;<a class=
+                                                                                                  "markup--anchor markup--pre-anchor"
+                                                                                          data-href=
+                                                                                                  "https://swiftkey.com/en/keyboard/ios" href=
+                                                                                                  "https://swiftkey.com/en/keyboard/ios" rel=
+                                                                                                  "nofollow">https://swiftkey.com/en/keyboard/ios</a>&quot;/&gt;<br>&lt;meta property=&quot;og:title&quot; content=&quot;SwiftKey Keyboard for iPhone, iPad &amp;amp;amp; iPod Touch&quot;/&gt;<br>&lt;meta property=&quot;og:description&quot; content=&quot;Discover the best new app for iPhone and iPad, SwiftKey Keyboard learns from you for faster, easier mobile typing — free.&quot;/&gt;<br>&lt;meta property=&quot;og:site_name&quot; content=&quot;SwiftKey&quot;/&gt;<br>&lt;meta property=”og:image&quot; content=&quot;/images/og/default.jpg&quot;/&gt;</pre>
+
+                                <p class="graf--p graf-after--pre" id=
+                                        "9302">Which, again, looks like this
+                                    (there’s a small bug, they forgot to put a
+                                    full path to the image, so no image is
+                                    displayed in Slack):</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="023c">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 181px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 25.900000000000002%;">
+
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*2PbEavG-cPbSWSsiAPBTLg.png"
+                                             data-height="298" data-image-id=
+                                                     "1*2PbEavG-cPbSWSsiAPBTLg.png"
+                                             data-width="1152">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*2PbEavG-cPbSWSsiAPBTLg.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*2PbEavG-cPbSWSsiAPBTLg.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*2PbEavG-cPbSWSsiAPBTLg.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "320b">A suggested rewrite follows.
+                                    Ideally, whatever content management is in
+                                    place would automate the updated Facebook
+                                    Open Graph tags used to provide previews
+                                    using available data.</p>
+
+                                    <pre class="graf--pre graf-after--p" id=
+                                            "2fd4">
+                                    &lt;meta property=&quot;og:url&quot; content=&quot;https://swiftkey.com/en/united-states-emoji/&quot;/&gt;<br>&lt;meta property=&quot;og:title&quot; content=&quot;The United States of Emoji presented by SwiftKey Keyboard&quot;/&gt;<br>&lt;meta property=&quot;og:description&quot; content=&quot;Which emoji does each US state use more than others? Explore the map above or select a state below to learn more.”/&gt;<br>&lt;meta property=”og:site_name” content=”SwiftKey”/&gt;<br>&lt;meta property=”og:image” content=”https://i.imgur.com/fdPhX2E.png&quot;/&gt;</pre>
+
+                                <p class="graf--p graf-after--pre" id=
+                                        "9998">The improved unfurl ends up looking
+                                    like this:</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="fcb4">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 474px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 67.7%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*uOQG4jILFHdPzuHWOzLkJA.png"
+                                             data-height="794" data-image-id=
+                                                     "1*uOQG4jILFHdPzuHWOzLkJA.png"
+                                             data-width="1172">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*uOQG4jILFHdPzuHWOzLkJA.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*uOQG4jILFHdPzuHWOzLkJA.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*uOQG4jILFHdPzuHWOzLkJA.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "3b76">To be clear, the suggested update
+                                    would also make their blog post content
+                                    stand out on Facebook as well, instead of
+                                    their generic site-wide pitch to download
+                                    their app.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "7948">More examples</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "d30d">Let’s look some universities for a
+                                    range of examples. Here is <a class=
+                                                                          "markup--anchor markup--p-anchor"
+                                                                  data-href="http://www.ucla.edu/" href=
+                                                                          "http://www.ucla.edu/" rel=
+                                                                          "nofollow">UCLA</a>, <a class=
+                                                                                                          "markup--anchor markup--p-anchor"
+                                                                                                  data-href="http://web.mit.edu/" href=
+                                                                                                          "http://web.mit.edu/" rel=
+                                                                                                          "nofollow">MIT</a>, and <a class=
+                                                                                                                                             "markup--anchor markup--p-anchor"
+                                                                                                                                     data-href="http://www.harvard.edu/" href=
+                                                                                                                                             "http://www.harvard.edu/" rel=
+                                                                                                                                             "nofollow">Harvard</a> shown in Slack as
+                                    fair, better, best illustrations of how
+                                    unfurls are used on live sites.</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="7235">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 162px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 23.1%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*EqhwleEeK4n-LdlRlMsZzA.png"
+                                             data-height="262" data-image-id=
+                                                     "1*EqhwleEeK4n-LdlRlMsZzA.png"
+                                             data-width="1132">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*EqhwleEeK4n-LdlRlMsZzA.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*EqhwleEeK4n-LdlRlMsZzA.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*EqhwleEeK4n-LdlRlMsZzA.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <figure class=
+                                                "graf--figure graf-after--figure" id=
+                                                "7604">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 186px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 26.6%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*MVlAGyrx9yBleHglzPZizw.png"
+                                             data-height="302" data-image-id=
+                                                     "1*MVlAGyrx9yBleHglzPZizw.png"
+                                             data-width="1136">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*MVlAGyrx9yBleHglzPZizw.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*MVlAGyrx9yBleHglzPZizw.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*MVlAGyrx9yBleHglzPZizw.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <figure class=
+                                                "graf--figure graf-after--figure" id=
+                                                "6635">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 502px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 71.7%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*hmac5h_5McfVXpHDQt6QPQ.png"
+                                             data-height="782" data-image-id=
+                                                     "1*hmac5h_5McfVXpHDQt6QPQ.png"
+                                             data-width="1090">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*hmac5h_5McfVXpHDQt6QPQ.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*hmac5h_5McfVXpHDQt6QPQ.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*hmac5h_5McfVXpHDQt6QPQ.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "a72c">If you view source on each website,
+                                    you’ll see that UCLA has almost no
+                                    descriptive tags in their headers and the
+                                    unfurl in Slack picks up the meta
+                                    description tag alone. In MIT’s case, the
+                                    unfurl is created from a mix of Twitter
+                                    Card tags and Facebook Open Graph tags and
+                                    since they provide a small logo GIF, it
+                                    gets displayed as a thumbnail. Harvard uses
+                                    Facebook’s Open Graph tags to offer up a
+                                    title and description as well as an image
+                                    and displays that at a larger size thanks
+                                    to the Twitter Card type set to
+                                    <strong class=
+                                                    "markup--strong markup--p-strong">summary_large_image</strong>.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "0af7">Optimizing your site for Slack (and
+                                    others)</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "3d6d">When choosing how to modify and
+                                    extend your site’s metadata for display in
+                                    Slack, it’s best to tailor it to your
+                                    content. If you’re running a multimedia
+                                    heavy site with large images or embedded
+                                    audio/video, you will likely want to run
+                                    your own oEmbed server to describe your
+                                    content to other sites (Slack optimizes
+                                    oEmbed for images currently, but allows
+                                    playing audio/video for select large
+                                    services like YouTube and SoundCloud). If
+                                    you’ve got a text-heavy content site,
+                                    something with standard Facebook Open Graph
+                                    or Twitter Card tags will likely work best
+                                    for you. If you’ve got an ecommerce site,
+                                    using Twitter Card tags will give you the
+                                    most flexibility.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "ef6c">Putting it all together</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "794d">Let’s say we ran the website for the
+                                    fictitious movie <em class=
+                                                                 "markup--em markup--p-em">Rural Juror</em>
+                                    (which itself was a punchline from the TV
+                                    show <em class="markup--em markup--p-em">30
+                                        Rock</em>) and we want our site to look its
+                                    best on Slack in unfurls, but also on
+                                    Twitter and Facebook as well. Here is some
+                                    sample code along with screenshots of how
+                                    the code renders on all three
+                                    platforms.</p>
+
+                                    <pre class="graf--pre graf-after--p" id=
+                                            "6ef4">
+                                    &lt;!-— facebook open graph tags --&gt;<br>&lt;meta property=&quot;og:type&quot; content=&quot;website&quot; /&gt;<br>&lt;meta property=&quot;og:url&quot; content=&quot;<a class="markup--anchor markup--pre-anchor"
+                                                                                                                                                                                                                data-href="https://www.haughey.com/slack/unfurl-ruraljuror.html" href=
+                                                                                                                                                                                                                        "https://www.haughey.com/slack/unfurl-ruraljuror.html" rel=
+                                                                                                                                                                                                                        "nofollow">http://ruraljuror.com/</a>&quot; /&gt;<br>&lt;meta property=&quot;og:title&quot; content=&quot;Rural Juror&quot; /&gt;<br>&lt;meta property=&quot;og:description&quot; content=&quot;The film, based on a Kevin Grisham novel (John Grisham’s brother), revolves around a Southern–born lawyer named Constance Justice.&quot; /&gt;<br>&lt;meta property=&quot;og:image&quot; content=&quot;<a class="markup--anchor markup--pre-anchor"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  data-href="https://i.imgur.com/iXvsz2v.png" href=
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          "https://i.imgur.com/iXvsz2v.png" rel=
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          "nofollow">http://ruraljuror.com/heroimage.png</a>&quot; /&gt;<br> <br>&lt;!-— twitter card tags additive with the og: tags --&gt;<br>&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;<br>&lt;meta name=&quot;twitter:domain&quot; value=&quot;ruraljuror.com&quot; /&gt;<br>&lt;meta name=&quot;twitter:title&quot; value=&quot;Rural Juror&quot; /&gt;<br>&lt;meta name=&quot;twitter:description&quot; value=&quot;The film, based on a Kevin Grisham novel (John Grisham’s brother), revolves around a Southern–born lawyer named Constance Justice.&quot; /&gt;<br>&lt;meta name=&quot;twitter:image&quot; content=&quot;<a class="markup--anchor markup--pre-anchor"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             data-href="https://i.imgur.com/iXvsz2v.png" href=
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     "https://i.imgur.com/iXvsz2v.png" rel=
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     "nofollow">http://ruraljuror.com/heroimage.png</a>&quot; /&gt;<br>&lt;meta name=&quot;twitter:url&quot; value=&quot;<a class="markup--anchor markup--pre-anchor"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            data-href="http://www.ruraljuror.com/" href="http://www.ruraljuror.com/" rel=
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "nofollow">http://www.ruraljuror.com/</a>&quot; /&gt;<br>&lt;meta name=&quot;twitter:label1&quot; value=&quot;Opens in Theaters&quot; /&gt;<br>&lt;meta name=&quot;twitter:data1&quot; value=&quot;December 1, 2015&quot; /&gt;<br>&lt;meta name=&quot;twitter:label2&quot; value=&quot;Or on demand&quot; /&gt;<br>&lt;meta name=&quot;twitter:data2&quot; value=&quot;at Hulu.com&quot; /&gt;</pre>
+
+                                <h4 class="graf--h4 graf-after--pre" id=
+                                        "0a73">Slack unfurl</h4>
+
+
+                                <figure class="graf--figure graf-after--h4"
+                                        id="4b8a">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 406px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 57.99999999999999%;">
+
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*kbFYUUpd3JLEjVHN8rakrg.png"
+                                             data-height="664" data-image-id=
+                                                     "1*kbFYUUpd3JLEjVHN8rakrg.png"
+                                             data-width="1144">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*kbFYUUpd3JLEjVHN8rakrg.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*kbFYUUpd3JLEjVHN8rakrg.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*kbFYUUpd3JLEjVHN8rakrg.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <h4 class="graf--h4 graf-after--figure" id=
+                                        "62d5">Facebook post preview</h4>
+
+
+                                <figure class="graf--figure graf-after--h4"
+                                        id="66d8">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 697px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 99.6%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*zNRVKibzQFOoUJKxg2APkQ.png"
+                                             data-height="1040" data-image-id=
+                                                     "1*zNRVKibzQFOoUJKxg2APkQ.png"
+                                             data-width="1044">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*zNRVKibzQFOoUJKxg2APkQ.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*zNRVKibzQFOoUJKxg2APkQ.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*zNRVKibzQFOoUJKxg2APkQ.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <h4 class="graf--h4 graf-after--figure" id=
+                                        "83ef">Twitter Card preview</h4>
+
+
+                                <figure class="graf--figure graf-after--h4"
+                                        id="9fc8">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 562px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 80.30000000000001%;">
+
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*4l14f3H-4k0HuirTRYbdpw.png"
+                                             data-height="931" data-image-id=
+                                                     "1*4l14f3H-4k0HuirTRYbdpw.png"
+                                             data-width="1160">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*4l14f3H-4k0HuirTRYbdpw.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*4l14f3H-4k0HuirTRYbdpw.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*4l14f3H-4k0HuirTRYbdpw.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <h3 class="graf--h3 graf-after--figure" id=
+                                        "7e1b">One more item for your pre-launch
+                                    checklist</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "4bdc">Armed with all this information,
+                                    improving how your site looks when
+                                    previewed in Slack isn’t <em class=
+                                                                         "markup--em markup--p-em">too</em> hard and
+                                    likely entails building off queries of
+                                    existing information or tweaking code that
+                                    is already in place. Yes, paying attention
+                                    to how your site looks in Slack
+                                    <strong class=
+                                                    "markup--strong markup--p-strong">is</strong>
+                                    one more thing to worry about when setting
+                                    up any new site, but since it is built on
+                                    existing Twitter and Facebook preview
+                                    technology, it’s fairly easy to tweak to
+                                    get the best possible previews.</p>
+
+
+                                <p class="graf--p graf-after--p" id="3367">
+                                    For those of you that have created any kind
+                                    of content management system (CMS), making
+                                    sure your CMS gets metadata and preview
+                                    formatting right means you’ll likely
+                                    improve previews for a great number of
+                                    websites and for any readers sharing pages
+                                    from your CMS. For systems like Wordpress,
+                                    plugins like Jetpack do a pretty good with
+                                    unfurls out of the box.</p>
+
+
+                                <p class="graf--p graf-after--p" id="b014">
+                                    There are a lot of ways to customize
+                                    exactly how your sites and pages appear in
+                                    social apps as well as Slack, so dive into
+                                    the documentation and figure out what suits
+                                    your content best, and start giving readers
+                                    the most informative previews possible.</p>
+
+
+                                <h3 class="graf--h3 graf-after--p" id=
+                                        "4ba1">One last example</h3>
+
+
+                                <p class="graf--p graf-after--h3" id=
+                                        "5786">Once you learn how simple it is to
+                                    improve your unfurls, you’ll find yourself
+                                    improving them everywhere you can. For
+                                    instance, here is how this very post
+                                    appears in Slack.</p>
+
+
+                                <figure class="graf--figure graf-after--p"
+                                        id="2943">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 440px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 62.8%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*Zj7VxBvKKFasJRXje91mzA.png"
+                                             data-height="912" data-image-id=
+                                                     "1*Zj7VxBvKKFasJRXje91mzA.png"
+                                             data-width="1452">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*Zj7VxBvKKFasJRXje91mzA.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*Zj7VxBvKKFasJRXje91mzA.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*Zj7VxBvKKFasJRXje91mzA.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+
+
+                                <p class="graf--p graf-after--figure" id=
+                                        "42a2">With a slight bit of retooling, I
+                                    built a quick demo that adds a bit more
+                                    information about it before you click,
+                                    hopefully the design team at Medium takes
+                                    some cues from it! :)</p>
+
+
+                                <figure class=
+                                                "graf--figure graf-after--p graf--last" id=
+                                                "8c37">
+                                    <div class=
+                                                 "aspectRatioPlaceholder is-locked"
+                                         style=
+                                                 "max-width: 700px; max-height: 484px;">
+                                        <div class=
+                                                     "aspectRatioPlaceholder-fill"
+                                             style="padding-bottom: 69.1%;">
+                                        </div>
+
+
+                                        <div class=
+                                                     "progressiveMedia js-progressiveMedia graf-image"
+                                             data-action="zoom"
+                                             data-action-value=
+                                                     "1*ciISMj8TgTe8nmTKJCuGAA.png"
+                                             data-height="970" data-image-id=
+                                                     "1*ciISMj8TgTe8nmTKJCuGAA.png"
+                                             data-width="1404">
+                                            <img class=
+                                                         "progressiveMedia-thumbnail js-progressiveMedia-thumbnail"
+                                                 src=
+                                                         "https://cdn-images-1.medium.com/freeze/max/60/1*ciISMj8TgTe8nmTKJCuGAA.png?q=20">
+
+                                            <canvas class=
+                                                            "progressiveMedia-canvas js-progressiveMedia-canvas">
+
+                                            </canvas>
+                                            <img class=
+                                                         "progressiveMedia-image js-progressiveMedia-image"
+                                                 data-src=
+                                                         "https://cdn-images-1.medium.com/max/1600/1*ciISMj8TgTe8nmTKJCuGAA.png"><noscript class="js-progressiveMedia-inner"><img class="progressiveMedia-noscript js-progressiveMedia-inner"
+                                                                                                                                                                                  src=
+                                                                                                                                                                                          "https://cdn-images-1.medium.com/max/1600/1*ciISMj8TgTe8nmTKJCuGAA.png"></noscript>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class=" section--body section--last">
+                        <div class="section-divider layoutSingleColumn">
+                            <hr class="section-divider">
+                        </div>
+
+
+                        <div class="section-content">
+                            <div class="section-inner layoutSingleColumn">
+                                <p class="graf--p graf--first graf--last"
+                                   id="2a2a"><em class=
+                                                         "markup--em markup--p-em">If you have any
+                                    additional questions about unfurling or run
+                                    into problems, contact us at</em> <a class=
+                                                                                 "markup--anchor markup--p-anchor"
+                                                                         data-href="mailto:feedback@slack.com" href=
+                                                                                 "/cdn-cgi/l/email-protection#11777474757370727a51627d70727a3f727e7c">
+                                    <em class=
+                                                "markup--em markup--p-em"><span class=
+                                                                                        "__cf_email__" data-cfemail=
+                                                                                        "dfb9bababbbdbebcb49facb3bebcb4f1bcb0b2">[email&#160;protected]</span>
+                                        </em></a> <em class=
+                                                                       "markup--em markup--p-em">and we’ll help
+                                    you out.</em></p>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+
+                <footer class="postArticle-footer">
+                    <div class="postActionsFooter container u-size740">
+                        <div class="row">
+                            <div class="col u-xs-size12of12">
+                                <div class=
+                                             "postMeta-inlineAcknowledgments js-postMetaAcknowledgments">
+                                    <span class=
+                                                  "postMeta-acknowledgment"><span data-tooltip="The following people helped the author by providing feedback before the story was published.">
+                                        Thanks to</span> <span><a class=
+                                                                          "link u-color--link" data-action=
+                                                                          "show-user-card" data-action-type=
+                                                                          "hover" data-user-id="e36d625a0aa5"
+                                                                  dir="auto" href=
+                                                                          "https://medium.com/@mjs">m
+                                        schweitz</a></span>.</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col u-xs-size12of12 js-postTags">
+                                <div class="postTags">
+                                    <div class=
+                                                 "tags tags--postTags tags--borderless">
+                                        <a class="link u-color--link"
+                                           data-action-source="post" href=
+                                                   "https://medium.com/tag/web-development?source=post">
+                                            Web Development</a><a class=
+                                                                          "link u-color--link"
+                                                                  data-action-source="post" href=
+                                                                          "https://medium.com/tag/slack?source=post">Slack</a><a class="link u-color--link"
+                                                                                                                                 data-action-source="post" href=
+                                                                                                                                         "https://medium.com/tag/unfurl?source=post">Unfurl</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row js-postActionsFooter">
+                            <div class="postActions col u-xs-size12of12">
+                                <div class=
+                                             "u-floatLeft buttonSet buttonSet--withLabels">
+                                    <div class="buttonSet-inner">
+                                        <div class="js-actionRecommend"
+                                             data-post-id="e64b4bb9254"
+                                             data-size="29px">
+                                            <button aria-label=
+                                                            "Recommend to share this article with your followers and let the author know you liked it"
+                                                    class=
+                                                            "button button--primary button--large button--chromeless u-accentColor--buttonNormal button--withIcon u-accentColor--iconLight button--withSvgIcon"
+                                                    data-action="upvote"
+                                                    data-action-value="e64b4bb9254"
+                                                    title=
+                                                            "Recommend to share this article with your followers and let the author know you liked it">
+                                                <span class=
+                                                              "button-defaultState"><svg class="svgIcon svgIcon--heart svgIcon-size--29px"
+                                                                                         height="29" viewbox="0 0 29 29"
+                                                                                         width="29">
+                                                <use class=
+                                                             "svgIcon-use svgIcon-use--part0"
+                                                     xlink:href=
+                                                             "#svg-heart-29px-p0">
+                                                </use></svg></span><span class=
+                                                                                 "button-activeState"><svg class="svgIcon svgIcon--heartFilled svgIcon-size--29px"
+                                                                                                           height="29" viewbox="0 0 29 29"
+                                                                                                           width="29">
+                                                <use class=
+                                                             "svgIcon-use svgIcon-use--part0"
+                                                     xlink:href=
+                                                             "#svg-heartFilled-29px-p0">
+                                                </use></svg></span></button><button class="button button--chromeless u-color--buttonNormal"
+                                                                                    data-action="show-recommends"
+                                                                                    data-action-value=
+                                                                                            "e64b4bb9254">181</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="buttonSet-inner">
+                                        <button class=
+                                                        "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon button--withSvgIcon"
+                                                data-action="respond"><svg class=
+                                                                                   "svgIcon svgIcon--response svgIcon-size--29px"
+                                                                           height="29" viewbox="0 0 29 29"
+                                                                           width="29">
+                                            <use class=
+                                                         "svgIcon-use svgIcon-use--part0"
+                                                 xlink:href="#svg-response-29px-p0">
+                                            </use></svg></button><button class=
+                                                                                 "button button--chromeless u-color--buttonNormal"
+                                                                         data-action=
+                                                                                 "scroll-to-responses">15</button>
+                                    </div>
+                                </div>
+
+
+                                <div class=
+                                             "u-floatRight buttonSet buttonSet--narrow">
+                                    <button aria-label=
+                                                    "Share this story on Twitter or Facebook"
+                                            class=
+                                                    "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon button--withSvgIcon"
+                                            data-action="show-share-popover"
+                                            data-action-source=
+                                                    "post_actions_footer" title=
+                                                    "Share this story on Twitter or Facebook">
+                                        <svg class=
+                                                     "svgIcon svgIcon--share svgIcon-size--29px"
+                                             height="29" viewbox="0 0 29 29" width=
+                                                     "29">
+                                            <use class=
+                                                         "svgIcon-use svgIcon-use--part0"
+                                                 xlink:href="#svg-share-29px-p0">
+                                            </use></svg></button><button aria-label="Bookmark this story to read later"
+                                                                         class=
+                                                                                 "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon button--bookmark js-bookmarkButton button--withSvgIcon"
+                                                                         data-action="add-to-bookmarks"
+                                                                         data-action-value="e64b4bb9254" title=
+                                                                                 "Bookmark this story to read later"><span class="button-defaultState"><svg class="svgIcon svgIcon--bookmark svgIcon-size--29px"
+                                                                                                                                                            height="29" viewbox="0 0 29 29" width=
+                                                                                                                                                                    "29">
+                                        <use class=
+                                                     "svgIcon-use svgIcon-use--part0"
+                                             xlink:href="#svg-bookmark-29px-p0">
+                                        </use></svg></span><span class=
+                                                                         "button-activeState"><svg class=
+                                                                                                           "svgIcon svgIcon--bookmarkFilled svgIcon-size--29px"
+                                                                                                   height="29" viewbox="0 0 29 29" width=
+                                                                                                           "29">
+                                        <use class=
+                                                     "svgIcon-use svgIcon-use--part0"
+                                             xlink:href=
+                                                     "#svg-bookmarkFilled-29px-p0">
+                                        </use></svg></span></button><button aria-label="More actions"
+                                                                            class=
+                                                                                    "button button--large button--dark button--chromeless u-color--buttonDark button--withIcon js-moreActionsButton button--withSvgIcon"
+                                                                            data-action="more-actions" title=
+                                                                                    "More actions"><svg class=
+                                                                                                                "svgIcon svgIcon--more svgIcon-size--25px"
+                                                                                                        height="25" viewbox="0 0 25 25" width=
+                                                                                                                "25">
+                                    <use class=
+                                                 "svgIcon-use svgIcon-use--part0"
+                                         xlink:href="#svg-more-25px-p0">
+                                    </use></svg></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container u-size740">
+                        <div class="row postFooter-info2">
+                            <div class="col u-xs-size12of12">
+                                <hr class="postFooter-infoDivider">
+                            </div>
+                        </div>
+
+
+                        <div class="row js-postFooterInfo">
+                            <div class=
+                                         "col u-xs-size12of12 u-sm-size6of12">
+                                <ul>
+                                    <li class="card card-user">
+                                        <div class="u-floatRight">
+                                                <span class=
+                                                              "followState js-followState buttonSet-inner"
+                                                      data-user-id=
+                                                              "1445046f3fe9"><button class=
+                                                                                             "button button--small u-noUserSelect button--withChrome u-color--buttonNormal button--withHover button--unblock js-unblockButton"
+                                                                                     data-action="toggle-block-user"
+                                                                                     data-action-source=
+                                                                                             "footer_card"
+                                                                                     data-action-value="1445046f3fe9">
+                                                <span class=
+                                                              "followState js-followState buttonSet-inner"
+                                                      data-user-id=
+                                                              "1445046f3fe9"><span class=
+                                                                                           "button-label button-defaultState">
+                                                Blocked</span><span class=
+                                                                            "button-label button-hoverState">Unblock</span></span><button class="button button--primary button--small u-noUserSelect button--withChrome u-accentColor--buttonNormal button--follow js-followButton"
+                                                                                                                                          data-action=
+                                                                                                                                                  "toggle-subscribe-user"
+                                                                                                                                          data-action-source=
+                                                                                                                                                  "footer_card_follow"
+                                                                                                                                          data-action-value=
+                                                                                                                                                  "1445046f3fe9"
+                                                                                                                                          data-subscribe-source=
+                                                                                                                                                  "footer_card"><span class=
+                                                                                                                                                                              "button-label button-defaultState js-buttonLabel">Follow</span><span class="button-label button-activeState">Following</span></button></button></span>
+                                        </div>
+
+
+                                        <div class="card-imageWrapper">
+                                            <a aria-label=
+                                                       "Go to the profile of Matt Haughey"
+                                               class=
+                                                       "link avatar u-color--link"
+                                               data-action-source=
+                                                       "footer_card" data-user-id=
+                                                       "1445046f3fe9" dir="auto" href=
+                                                       "https://medium.com/@mathowie?source=footer_card"
+                                               title=
+                                                       "Go to the profile of Matt Haughey">
+                                                <img alt=
+                                                             "Go to the profile of Matt Haughey"
+                                                     class=
+                                                             "avatar-image avatar-image--small"
+                                                     src=
+                                                             "https://cdn-images-1.medium.com/fit/c/120/120/0*fT3yd1v6MXdubdY1.jpeg"></a>
+                                        </div>
+
+
+                                        <div class="card-content">
+                                            <h3 class="card-name">
+                                                <a aria-label=
+                                                           "Go to the profile of Matt Haughey"
+                                                   class=
+                                                           "link link--primary u-accentColor--hoverTextNormal"
+                                                   data-user-id="1445046f3fe9"
+                                                   dir="auto" href=
+                                                           "https://medium.com/@mathowie"
+                                                   property="cc:attributionName"
+                                                   rel="author cc:attributionUrl"
+                                                   title=
+                                                           "Go to the profile of Matt Haughey">
+                                                    Matt Haughey</a>
+                                            </h3>
+
+
+                                            <p class="card-description">
+                                                Internet nerd writing about
+                                                internet nerdery, mostly.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            <div class=
+                                         "col u-xs-size12of12 u-sm-size6of12 postFooter-collectionCard">
+                                <ul>
+                                    <li class="card card-collection">
+                                        <div class="u-floatRight">
+                                            <button class=
+                                                            "button button--primary button--small u-noUserSelect button--withChrome u-accentColor--buttonNormal button--followCollection js-followCollectionButton"
+                                                    data-action=
+                                                            "toggle-subscribe-collection"
+                                                    data-action-source=
+                                                            "footer_card_collection_follow"
+                                                    data-action-value=
+                                                            "slack-developer-blog"
+                                                    data-collection-id=
+                                                            "d76c0605b922"
+                                                    data-subscribe-source=
+                                                            "footer_card"><span class=
+                                                                                        "button-label button-defaultState js-buttonLabel">
+                                                Follow</span><span class=
+                                                                           "button-label button-activeState">Following</span></button>
+                                        </div>
+
+
+                                        <div class="card-imageWrapper">
+                                            <div class="card-imageWrapper">
+                                                <a aria-label=
+                                                           "Go to Slack Platform Blog"
+                                                   class=
+                                                           "link avatar avatar--roundedRectangle u-color--link"
+                                                   data-action-source=
+                                                           "footer_card" href=
+                                                           "https://medium.com/slack-developer-blog?source=footer_card"
+                                                   title=
+                                                           "Go to Slack Platform Blog">
+                                                    <img alt=
+                                                                 "Slack Platform Blog"
+                                                         class="avatar-image u-xs-size60x60"
+                                                         src=
+                                                                 "https://cdn-images-1.medium.com/fit/c/120/120/1*CJXYjBLEdR2-fv3ssgum0g.jpeg"></a>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="card-content">
+                                            <h3 class="card-name"><a class=
+                                                                             "link link--primary u-accentColor--hoverTextNormal"
+                                                                     data-action-source=
+                                                                             "footer_card" href=
+                                                                             "https://medium.com/slack-developer-blog?source=footer_card"
+                                                                     rel="collection">Slack Platform
+                                                Blog</a>
+                                            </h3>
+
+
+                                            <p class="card-description">
+                                                Several bots are typing…</p>
+
+
+                                            <div class="buttonSet">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class=
+                                 "js-postPromotionWrapper postPromotionWrapper">
+                    </div>
+
+
+                    <div class="js-postBundleWrapper postBundleWrapper">
+                    </div>
+
+
+                    <div class=
+                                 "responsesWrapper supplementalPostContent js-responsesWrapper postFooter">
+
+                    </div>
+
+
+                    <div class="supplementalPostContent js-readNext">
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </div>
+</div>
+
+
+<div class="loadingBar">
+</div>
+</body>
+</html>
