@@ -1,4 +1,4 @@
-package net.dinomite.unfurling
+package net.dinomite.web.unfurling
 
 import com.google.common.net.MediaType
 import org.apache.http.HttpHeaders

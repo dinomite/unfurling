@@ -1,4 +1,4 @@
-package net.dinomite.unfurling
+package net.dinomite.web.unfurling
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*

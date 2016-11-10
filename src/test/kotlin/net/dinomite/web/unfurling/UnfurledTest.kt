@@ -1,4 +1,4 @@
-package net.dinomite.unfurling
+package net.dinomite.web.unfurling
 
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
