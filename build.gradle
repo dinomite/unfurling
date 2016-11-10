@@ -66,6 +66,7 @@ publishing {
 
 release {
     tagTemplate = 'v$version'
+    afterReleaseBuild.dependsOn bintrayUpload
 }
 
 bintray {
