@@ -51,7 +51,7 @@ class UnfurlingServiceTest {
         wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
         assertEquals(requestUrl, unfurled.url.toString())
         assertEquals("Everything you ever wanted to know about unfurling but were afraid to ask /or/ How to make your… — Slack Platform Blog", unfurled.title)
-        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.image.toString())
+        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.imageUrl.toString())
         assertEquals("Let’s start with the most obvious question first. This is what an “unfurl” is:", unfurled.description)
     }
 
@@ -86,7 +86,7 @@ class UnfurlingServiceTest {
         wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
         assertEquals(requestUrl, unfurled.url.toString())
         assertEquals("Everything you ever wanted to know about unfurling but were afraid to ask /or/ How to make your… — Slack Platform Blog", unfurled.title)
-        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.image.toString())
+        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.imageUrl.toString())
         assertEquals("Let’s start with the most obvious question first. This is what an “unfurl” is:", unfurled.description)
     }
 
@@ -108,7 +108,7 @@ class UnfurlingServiceTest {
         wireMockServer.verify(getRequestedFor(urlEqualTo(fullPath)))
         assertEquals(requestUrl, unfurled.url.toString())
         assertEquals(filename, unfurled.title)
-        assertEquals(requestUrl, unfurled.image.toString())
+        assertEquals(requestUrl, unfurled.imageUrl.toString())
         assertEquals(filename, unfurled.description)
     }
 

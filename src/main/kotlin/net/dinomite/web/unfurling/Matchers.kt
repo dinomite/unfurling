@@ -29,4 +29,8 @@ object Matchers {
             Matcher("meta[name=title]", { e -> e?.attr("content") }),
             Matcher("title", { e -> e?.text() })
     )
+
+    val canonicalUrl = listOf(
+            Matcher("link[rel='canonical']", { e -> e?.attr("href") })
+    )
 }

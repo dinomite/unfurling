@@ -23,7 +23,9 @@ constructor(val httpClient: CloseableHttpClient) {
     /**
      * Unfurl a URL
      *
-     * @return An Unfurled with the summary information, or null if it couldn't be retrieved or divined
+     * @return An Unfurled with the summary information.  Any Unfurled values for which the * Matchers cannot divine
+     * will be empty.If the URI cannot be contacted successfully (HTTP status other that 200 OK), the Unfurled object
+     * will have empty values.
      */
     fun unfurl(uri: URI): Unfurled {
         val get = HttpGet(uri)
@@ -36,17 +38,17 @@ constructor(val httpClient: CloseableHttpClient) {
 
                 val mediaType = getMediaType(response)
                 if (mediaType != null && mediaType.`is`(MediaType.ANY_IMAGE_TYPE)) {
-                    return buildFromImage(uri)
+                    return buildFromImage(uri, response)
                 } else {
                     return buildFromHtml(uri, response)
                 }
             }
         } catch (e: SSLHandshakeException) {
-            logger.warn("SSL error trying to get summary for page <$uri>: " + e.message)
+            logger.warn("SSL error trying to get summary: " + e.message)
         } catch (e: SocketTimeoutException) {
-            logger.warn("Timeout trying to get summary for page <$uri>: " + e.message)
+            logger.warn("Timeout trying to get summary: " + e.message)
         } catch (e: HttpHostConnectException) {
-            logger.warn("Unable to connect to server trying to get summary for page <$uri>: " + e.message)
+            logger.warn("Unable to connect to server trying to get summary: " + e.message)
         } finally {
             MDC.remove("mdc")
         }
@@ -75,9 +77,13 @@ constructor(val httpClient: CloseableHttpClient) {
     /**
      * Build an Unfurled for a raw image. This just uses the URI for all values.
      */
-    private fun buildFromImage(uri: URI): Unfurled {
+    private fun buildFromImage(uri: URI, response: HttpResponse): Unfurled {
         val filename = File(uri.path).name
-        return Unfurled(uri, filename, uri, filename)
+        // TODO Get width & height from image entity
+        val width = 0
+        val height = 0
+
+        return Unfurled(uri, uri, Type.IMAGE, filename, filename, Image(uri, width, height))
     }
 
     /**
@@ -89,8 +95,20 @@ constructor(val httpClient: CloseableHttpClient) {
 
         val document = Jsoup.parse(entityString)
         val head = document.select("head").first()
-        val image = fixUrl(getImageUrl(head), uri.scheme + "://" + uri.authority, uri.path)
-        return Unfurled(uri, getTitle(head), image, getDescription(head))
+
+        val imageUrl = fixUrl(getImageUrl(head), uri.scheme + "://" + uri.authority, uri.path)
+        // TODO get width & height from metadatas
+        val width = 0
+        val height = 0
+        val image = Image(imageUrl, width, height)
+
+        val title = getTitle(head)
+        val description = getDescription(head)
+        return Unfurled(uri, getCanonicalUrl(head), Type.TEXT, title, description, image)
+    }
+
+    private fun  getCanonicalUrl(head: Element): URI {
+        return URI(getValue(head, Matchers.canonicalUrl, "canonicalUrl"))
     }
 
     fun getTitle(head: Element): String {
@@ -115,7 +133,7 @@ constructor(val httpClient: CloseableHttpClient) {
             }
         }
 
-        logger.warn("Value not found for $thing")
+        logger.info("Value not found for $thing")
         return ""
     }
 
