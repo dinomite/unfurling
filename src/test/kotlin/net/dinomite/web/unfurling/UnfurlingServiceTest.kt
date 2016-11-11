@@ -173,7 +173,7 @@ class UnfurlingServiceTest {
     }
 
     @Test
-    fun getImageUrl_PrefersOGImage() {
+    fun getImage_PrefersOGImage() {
         val imageUrl = "http://foo.com/image.jpg"
         val head = Jsoup.parse("<html><head>" +
                 "<meta property=\"og:image\" content=\"$imageUrl\">" +
@@ -183,7 +183,7 @@ class UnfurlingServiceTest {
     }
 
     @Test
-    fun getImageUrl_UsesTwitterImageWhenOGAbsent() {
+    fun getImage_UsesTwitterImageWhenOGAbsent() {
         val imageUrl = "http://foo.com/image.jpg"
         val head = Jsoup.parse("<html><head>" +
                 "<meta name=\"twitter:image:src\" content=\"$imageUrl\">" +

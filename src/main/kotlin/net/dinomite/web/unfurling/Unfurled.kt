@@ -21,4 +21,5 @@ data class Image(val url: URI, val width: Int, val height: Int)
 
 data class Video(val url: URI, val width: Int, val height: Int)
 
+// TODO Text probably isn't really text, it includes things like YouTube…
 enum class Type { TEXT, IMAGE, VIDEO }

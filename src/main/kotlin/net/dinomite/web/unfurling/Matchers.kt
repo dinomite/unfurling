@@ -17,6 +17,16 @@ object Matchers {
             Matcher("link[rel=shortcut icon]") { e -> e?.attr("href") }
     )
 
+    val imageWidth = listOf(
+            Matcher("meta[property=og:image:width]") { e -> e?.attr("content") },
+            Matcher("meta[name=twitter:image:width]") { e -> e?.attr("content") }
+    )
+
+    val imageHeight = listOf(
+            Matcher("meta[property=og:image:height]") { e -> e?.attr("content") },
+            Matcher("meta[name=twitter:image:height]") { e -> e?.attr("content") }
+    )
+
     val description = listOf(
             Matcher("meta[property=og:description]", { e -> e?.attr("content") }),
             Matcher("meta[name=twitter:description]", { e -> e?.attr("content") }),

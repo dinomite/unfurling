@@ -21,7 +21,8 @@ constructor(val httpClient: CloseableHttpClient) {
     private val logger = LoggerFactory.getLogger(this.javaClass.name)
 
     /**
-     * Unfurl a URL
+     * Unfurl a URL.  Preference is given first to Facebook Opengraph, followed by Twitter Card,
+     * and finally HTML meta tags.  See Matchers for more detail.
      *
      * @return An Unfurled with the summary information.  Any Unfurled values for which the * Matchers cannot divine
      * will be empty.If the URI cannot be contacted successfully (HTTP status other that 200 OK), the Unfurled object
@@ -96,18 +97,13 @@ constructor(val httpClient: CloseableHttpClient) {
         val document = Jsoup.parse(entityString)
         val head = document.select("head").first()
 
-        val imageUrl = fixUrl(getImageUrl(head), uri.scheme + "://" + uri.authority, uri.path)
-        // TODO get width & height from metadatas
-        val width = 0
-        val height = 0
-        val image = Image(imageUrl, width, height)
-
         val title = getTitle(head)
         val description = getDescription(head)
+        val image = getImage(head, uri)
         return Unfurled(uri, getCanonicalUrl(head), Type.TEXT, title, description, image)
     }
 
-    private fun  getCanonicalUrl(head: Element): URI {
+    fun getCanonicalUrl(head: Element): URI {
         return URI(getValue(head, Matchers.canonicalUrl, "canonicalUrl"))
     }
 
@@ -115,12 +111,28 @@ constructor(val httpClient: CloseableHttpClient) {
         return getValue(head, Matchers.title, "title")
     }
 
-    fun getImageUrl(head: Element): String {
-        return getValue(head, Matchers.image, "image")
-    }
-
     fun getDescription(head: Element): String {
         return getValue(head, Matchers.description, "description")
+    }
+
+    fun getImage(head: Element, parent: URI): Image {
+        val rawUrl = getValue(head, Matchers.image, "imageUrl")
+        val imageUrl = fixUrl(rawUrl, parent.scheme + "://" + parent.authority, parent.path)
+
+        var width = 0
+        try {
+            width = getValue(head, Matchers.imageWidth, "imageWidth").toInt()
+        } catch (e: NumberFormatException) {
+            logger.info("Image width isn't an integer", e)
+        }
+        var height = 0
+        try {
+            height = getValue(head, Matchers.imageHeight, "imageHeight").toInt()
+        } catch (e: NumberFormatException) {
+            logger.info("Image width isn't an integer", e)
+        }
+
+        return Image(imageUrl, width, height)
     }
 
     fun getValue(head: Element, matchers: List<Matcher>, thing: String): String {
