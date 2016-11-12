@@ -51,7 +51,7 @@ class UnfurlingServiceTest {
         wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
         assertEquals(requestUrl, unfurled.url.toString())
         assertEquals("Everything you ever wanted to know about unfurling but were afraid to ask /or/ How to make your… — Slack Platform Blog", unfurled.title)
-        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.imageUrl.toString())
+        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.image?.url.toString())
         assertEquals("Let’s start with the most obvious question first. This is what an “unfurl” is:", unfurled.description)
     }
 
@@ -86,7 +86,7 @@ class UnfurlingServiceTest {
         wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
         assertEquals(requestUrl, unfurled.url.toString())
         assertEquals("Everything you ever wanted to know about unfurling but were afraid to ask /or/ How to make your… — Slack Platform Blog", unfurled.title)
-        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.imageUrl.toString())
+        assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.image?.url.toString())
         assertEquals("Let’s start with the most obvious question first. This is what an “unfurl” is:", unfurled.description)
     }
 
@@ -108,7 +108,7 @@ class UnfurlingServiceTest {
         wireMockServer.verify(getRequestedFor(urlEqualTo(fullPath)))
         assertEquals(requestUrl, unfurled.url.toString())
         assertEquals(filename, unfurled.title)
-        assertEquals(requestUrl, unfurled.imageUrl.toString())
+        assertEquals(requestUrl, unfurled.image?.url.toString())
         assertEquals(filename, unfurled.description)
     }
 
@@ -174,21 +174,37 @@ class UnfurlingServiceTest {
 
     @Test
     fun getImage_PrefersOGImage() {
-        val imageUrl = "http://foo.com/image.jpg"
+        val parent = URI("http://foo.com")
+        val imageUrl = URI("http://foo.com/image.jpg")
+        val width = 800
+        val height = 200
         val head = Jsoup.parse("<html><head>" +
                 "<meta property=\"og:image\" content=\"$imageUrl\">" +
+                "<meta name=\"og:image:width\" content=\"$width\">" +
+                "<meta name=\"og:image:height\" content=\"$height\">" +
                 "<meta name=\"twitter:image:src\" content=\"$imageUrl\">" +
+                "<meta name=\"twitter:image:width\" content=\"1$width\">" +
+                "<meta name=\"twitter:image:height\" content=\"1$height\">" +
                 "</head></html>").select("head").first()
-        assertEquals(imageUrl, service.getImageUrl(head))
+        assertEquals(imageUrl, service.getImage(head, parent).url)
     }
 
     @Test
     fun getImage_UsesTwitterImageWhenOGAbsent() {
-        val imageUrl = "http://foo.com/image.jpg"
+        val parent = URI("http://foo.com")
+        val imageUrl = URI("http://foo.com/image.jpg")
+        val width = 800
+        val height = 200
         val head = Jsoup.parse("<html><head>" +
                 "<meta name=\"twitter:image:src\" content=\"$imageUrl\">" +
+                "<meta name=\"twitter:image:width\" content=\"$width\">" +
+                "<meta name=\"twitter:image:height\" content=\"$height\">" +
                 "</head></html>").select("head").first()
-        assertEquals(imageUrl, service.getImageUrl(head))
+
+        val image = service.getImage(head, parent)
+        assertEquals(imageUrl, image.url)
+        assertEquals(width, image.width)
+        assertEquals(height, image.height)
     }
 
     @Test

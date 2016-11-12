@@ -10,13 +10,13 @@ class UnfurledTest {
 
     @Test
     fun isEmptyTrueWhenEmpty() {
-        val unfurled = Unfurled(pageUri, "", URI(""), "")
+        val unfurled = Unfurled(pageUri)
         assertTrue(unfurled.isEmpty())
     }
 
     @Test
     fun isEmptyFalseWhenNotEmpty() {
-        val unfurled = Unfurled(pageUri, "The title", URI("http://foobar.com/image.jpg"), "The description")
+        val unfurled = Unfurled(pageUri, pageUri, Type.TEXT, "The title")
         assertFalse(unfurled.isEmpty())
     }
 }

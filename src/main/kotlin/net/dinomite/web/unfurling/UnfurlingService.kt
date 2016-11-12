@@ -123,13 +123,13 @@ constructor(val httpClient: CloseableHttpClient) {
         try {
             width = getValue(head, Matchers.imageWidth, "imageWidth").toInt()
         } catch (e: NumberFormatException) {
-            logger.info("Image width isn't an integer", e)
+            logger.info("Image width isn't an integer", e.message)
         }
         var height = 0
         try {
             height = getValue(head, Matchers.imageHeight, "imageHeight").toInt()
         } catch (e: NumberFormatException) {
-            logger.info("Image width isn't an integer", e)
+            logger.info("Image width isn't an integer", e.message)
         }
 
         return Image(imageUrl, width, height)
