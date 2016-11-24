@@ -14,6 +14,7 @@ import org.slf4j.MDC
 import java.io.File
 import java.net.SocketTimeoutException
 import java.net.URI
+import javax.imageio.ImageIO
 import javax.net.ssl.SSLHandshakeException
 
 class UnfurlingService
@@ -79,10 +80,10 @@ constructor(val httpClient: CloseableHttpClient) {
      * Build an Unfurled for a raw image. This just uses the URI for all values.
      */
     private fun buildFromImage(uri: URI, response: HttpResponse): Unfurled {
+        val image = ImageIO.read(response.entity.content)
         val filename = File(uri.path).name
-        // TODO Get width & height from image entity
-        val width = 0
-        val height = 0
+        val width = image.width
+        val height = image.height
 
         return Unfurled(uri, uri, Type.IMAGE, filename, filename, Image(uri, width, height))
     }

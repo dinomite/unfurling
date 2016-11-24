@@ -26,5 +26,5 @@ data class Video(val url: URI, val width: Int, val height: Int) {
     fun isEmpty(): Boolean = url.toString() == "" && width == 0 && height == 0
 }
 
-// TODO Text probably isn't really text, it includes things like YouTube…
+// TODO Should VIDEO be used for something like YouTube that might have an inline player?
 enum class Type { TEXT, IMAGE, VIDEO }
