@@ -3,6 +3,8 @@ package net.dinomite.web.unfurling
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration
+import com.google.common.base.Charsets
+import com.google.common.io.CharStreams
 import com.google.common.io.Resources
 import com.google.common.net.HttpHeaders
 import org.apache.http.impl.client.HttpClients
@@ -12,8 +14,9 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.IOException
+import java.io.InputStreamReader
 import java.net.URI
-import java.nio.charset.StandardCharsets
+import java.util.zip.GZIPInputStream
 
 class UnfurlingServiceTest {
     var wireMockServer: WireMockServer
@@ -42,7 +45,7 @@ class UnfurlingServiceTest {
         wireMockServer.stubFor(get(urlEqualTo(path))
             .willReturn(aResponse()
                     .withStatus(200)
-                    .withBody(fixture("fixtures/medium.html"))
+                    .withBody(gzipFixture("fixtures/medium.html.gz"))
             )
         )
 
@@ -77,7 +80,7 @@ class UnfurlingServiceTest {
                 .willReturn(aResponse()
                         .withHeader(HttpHeaders.CONTENT_TYPE, "text/html;;charset=UTF-8")
                         .withStatus(200)
-                        .withBody(fixture("fixtures/medium.html"))
+                        .withBody(gzipFixture("fixtures/medium.html.gz"))
                 )
         )
 
@@ -97,9 +100,9 @@ class UnfurlingServiceTest {
         val requestUrl = origin + fullPath
         wireMockServer.stubFor(get(urlEqualTo(fullPath))
                 .willReturn(aResponse()
-                        .withHeader(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .withHeader(HttpHeaders.CONTENT_TYPE, "image/jpg")
                         .withStatus(200)
-                        .withBody("data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=")
+                        .withBodyFile(filename)
                 )
         )
 
@@ -110,6 +113,8 @@ class UnfurlingServiceTest {
         assertEquals(filename, unfurled.title)
         assertEquals(requestUrl, unfurled.image?.url.toString())
         assertEquals(filename, unfurled.description)
+        assertEquals(1, unfurled.image?.width)
+        assertEquals(1, unfurled.image?.height)
     }
 
     @Test
@@ -243,9 +248,10 @@ class UnfurlingServiceTest {
         assertEquals(URI(origin + path + image), service.fixUrl(image, origin, path))
     }
 
-    private fun fixture(filename: String): String {
+    private fun gzipFixture(filename: String): String {
         try {
-            return Resources.toString(Resources.getResource(filename), StandardCharsets.UTF_8).trim { it <= ' ' }
+            val fileStream = GZIPInputStream(Resources.getResource(filename).openStream())
+            return CharStreams.toString(InputStreamReader(fileStream, Charsets.UTF_8))
         } catch (e: IOException) {
             throw IllegalArgumentException(e)
         }
