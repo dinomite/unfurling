@@ -10,7 +10,7 @@ Use it by creating an `UnfurlingService` and asking it to `unfurl()` a `URI`:
     val unfurled = unfurlingService.unfurl(URI("https://twitter.com/dinomite"))
     println(unfurled.url) // https://twitter.com/dinomite
     println(unfurled.title) // Rev. Drew Stephens
-    println(unfurled.imageUrl) // https://pbs.twimg.com/profile_images/1144814297/Drew_955x955.jpg
+    println(unfurled.image.url) // https://pbs.twimg.com/profile_images/1144814297/Drew_955x955.jpg
     println(unfurled.description) // Grand High Figurehead, Church of Empirical Evidence
 
 # Logging
