@@ -7,12 +7,12 @@ data class Unfurled(val url: URI,
                     val type: Type = Type.TEXT,
                     val title: String = "",
                     val description: String = "",
-                    val image: Image? = null) {
+                    val image: Image = Image(URI(""), 0, 0)) {
     /**
      * @return True if this unfurled has an empty title, imageUrl, and description
      */
     fun isEmpty(): Boolean {
-        return title.isEmpty() && description.isEmpty() && (image == null || image.isEmpty())
+        return title.isEmpty() && description.isEmpty() && image.isEmpty()
     }
 }
 
