@@ -156,7 +156,7 @@ class UnfurlingServiceTest {
                 "<meta property=\"og:title\" content=\"$title\">" +
                 "<meta name=\"title\" content=\"$title\">" +
                 "</head></html>").select("head").first()
-        assertEquals(title, service.getTitle(head))
+        assertEquals(title, service.getTitleFromMetadata(head))
     }
 
     @Test
@@ -165,7 +165,7 @@ class UnfurlingServiceTest {
         val head = Jsoup.parse("<html><head>" +
                 "<meta name=\"title\" content=\"$title\">" +
                 "</head></html>").select("head").first()
-        assertEquals(title, service.getTitle(head))
+        assertEquals(title, service.getTitleFromMetadata(head))
     }
 
     @Test
@@ -174,7 +174,7 @@ class UnfurlingServiceTest {
         val head = Jsoup.parse("<html><head>" +
                 "<title>$title</title>" +
                 "</head></html>").select("head").first()
-        assertEquals(title, service.getTitle(head))
+        assertEquals(title, service.getTitleFromMetadata(head))
     }
 
     @Test
@@ -191,7 +191,7 @@ class UnfurlingServiceTest {
                 "<meta name=\"twitter:image:width\" content=\"1$width\">" +
                 "<meta name=\"twitter:image:height\" content=\"1$height\">" +
                 "</head></html>").select("head").first()
-        assertEquals(imageUrl, service.getImage(head, parent).url)
+        assertEquals(imageUrl, service.getImageFromMetadata(head, parent).url)
     }
 
     @Test
@@ -206,7 +206,7 @@ class UnfurlingServiceTest {
                 "<meta name=\"twitter:image:height\" content=\"$height\">" +
                 "</head></html>").select("head").first()
 
-        val image = service.getImage(head, parent)
+        val image = service.getImageFromMetadata(head, parent)
         assertEquals(imageUrl, image.url)
         assertEquals(width, image.width)
         assertEquals(height, image.height)
@@ -219,7 +219,7 @@ class UnfurlingServiceTest {
                 "<meta property=\"og:description\" content=\"$description\">" +
                 "<meta name=\"description\" content=\"$description\">" +
                 "</head></html>").select("head").first()
-        assertEquals(description, service.getDescription(head))
+        assertEquals(description, service.getDescriptionFromMetadata(head))
     }
 
     @Test
@@ -228,7 +228,7 @@ class UnfurlingServiceTest {
         val head = Jsoup.parse("<html><head>" +
                 "<meta name=\"description\" content=\"$description\">" +
                 "</head></html>").select("head").first()
-        assertEquals(description, service.getDescription(head))
+        assertEquals(description, service.getDescriptionFromMetadata(head))
     }
 
     @Test

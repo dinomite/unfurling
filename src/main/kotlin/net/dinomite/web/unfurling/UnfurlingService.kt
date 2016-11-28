@@ -40,9 +40,9 @@ constructor(val httpClient: CloseableHttpClient) {
 
                 val mediaType = getMediaType(response)
                 if (mediaType != null && mediaType.`is`(MediaType.ANY_IMAGE_TYPE)) {
-                    return buildFromImage(uri, response)
+                    return buildUnfurledFromImage(uri, response)
                 } else {
-                    return buildFromHtml(uri, response)
+                    return buildUnfurledFromHtml(uri, response)
                 }
             }
         } catch (e: SSLHandshakeException) {
@@ -79,7 +79,7 @@ constructor(val httpClient: CloseableHttpClient) {
     /**
      * Build an Unfurled for a raw image. This just uses the URI for all values.
      */
-    private fun buildFromImage(uri: URI, response: HttpResponse): Unfurled {
+    private fun buildUnfurledFromImage(uri: URI, response: HttpResponse): Unfurled {
         val image = ImageIO.read(response.entity.content)
         val filename = File(uri.path).name
         val width = image.width
@@ -91,44 +91,50 @@ constructor(val httpClient: CloseableHttpClient) {
     /**
      * Build an Unfurled for an HTML page
      */
-    private fun buildFromHtml(uri: URI, response: HttpResponse): Unfurled {
+    private fun buildUnfurledFromHtml(uri: URI, response: HttpResponse): Unfurled {
         val entity = response.entity ?: return Unfurled(uri)
         val entityString = EntityUtils.toString(entity, Charsets.UTF_8) ?: return Unfurled(uri)
 
         val document = Jsoup.parse(entityString)
         val head = document.select("head").first()
 
-        val title = getTitle(head)
-        val description = getDescription(head)
-        val image = getImage(head, uri)
-        return Unfurled(uri, getCanonicalUrl(head), Type.TEXT, title, description, image)
+        val title = getTitleFromMetadata(head)
+        val description = getDescriptionFromMetadata(head)
+        val image = getImageFromMetadata(head, uri)
+        return Unfurled(uri, getCanonicalUrlFromMetadata(head), Type.TEXT, title, description, image)
     }
 
-    fun getCanonicalUrl(head: Element): URI {
-        return URI(getValue(head, Matchers.canonicalUrl, "canonicalUrl"))
+    fun getCanonicalUrlFromMetadata(head: Element): URI {
+        return URI(getValueFromMetadata(head, Matchers.canonicalUrl, "canonicalUrl"))
     }
 
-    fun getTitle(head: Element): String {
-        return getValue(head, Matchers.title, "title")
+    fun getTitleFromMetadata(head: Element): String {
+        return getValueFromMetadata(head, Matchers.title, "title")
     }
 
-    fun getDescription(head: Element): String {
-        return getValue(head, Matchers.description, "description")
+    fun getDescriptionFromMetadata(head: Element): String {
+        return getValueFromMetadata(head, Matchers.description, "description")
     }
 
-    fun getImage(head: Element, parent: URI): Image {
-        val rawUrl = getValue(head, Matchers.image, "imageUrl")
-        val imageUrl = fixUrl(rawUrl, parent.scheme + "://" + parent.authority, parent.path)
+    /**
+     * Retrieve the {@link Image} from the head's metadata.
+     *
+     * @param   head The head element containing metadata
+     * @param   url  The page's URL, used to build absolute URLs for the Image
+     */
+    fun getImageFromMetadata(head: Element, url: URI): Image {
+        val rawUrl = getValueFromMetadata(head, Matchers.image, "imageUrl")
+        val imageUrl = fixUrl(rawUrl, url.scheme + "://" + url.authority, url.path)
 
         var width = 0
         try {
-            width = getValue(head, Matchers.imageWidth, "imageWidth").toInt()
+            width = getValueFromMetadata(head, Matchers.imageWidth, "imageWidth").toInt()
         } catch (e: NumberFormatException) {
             logger.info("Image width isn't an integer", e.message)
         }
         var height = 0
         try {
-            height = getValue(head, Matchers.imageHeight, "imageHeight").toInt()
+            height = getValueFromMetadata(head, Matchers.imageHeight, "imageHeight").toInt()
         } catch (e: NumberFormatException) {
             logger.info("Image width isn't an integer", e.message)
         }
@@ -136,7 +142,7 @@ constructor(val httpClient: CloseableHttpClient) {
         return Image(imageUrl, width, height)
     }
 
-    fun getValue(head: Element, matchers: List<Matcher>, thing: String): String {
+    fun getValueFromMetadata(head: Element, matchers: List<Matcher>, thing: String): String {
         for (matcher: Matcher in matchers) {
             val element = head.select(matcher.cssQuery)?.first()
 
@@ -151,23 +157,27 @@ constructor(val httpClient: CloseableHttpClient) {
     }
 
     /**
-     * Add origin to image paths that are lacking
+     * Add origin to ambiguous references if necessary
+     *
+     * @param   subject The filename, path + filename, or full URL to a resource
+     * @param   origin  The origin to add if the given subject is lacking
+     * @param   path    The path to add if the given subject has a relative path
      */
-    fun fixUrl(image: String, origin: String, path: String): URI {
-        if (image.isEmpty()) {
+    fun fixUrl(subject: String, origin: String, path: String): URI {
+        if (subject.isEmpty()) {
             return URI("")
         }
 
-        if (image.startsWith("/")) {
-            return URI(origin + image)
+        if (subject.startsWith("/")) {
+            return URI(origin + subject)
         }
 
-        if (URI(image).scheme == null) {
+        if (URI(subject).scheme == null) {
             logger.info("Relative path")
-            return URI(origin + path + image)
+            return URI(origin + path + subject)
         }
 
-        return URI(image)
+        return URI(subject)
     }
 }
 
