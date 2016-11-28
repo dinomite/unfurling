@@ -10,8 +10,11 @@ object Matchers {
             Matcher("meta[name=twitter:image:src]") { e -> e?.attr("content") },
             Matcher("meta[name=twitter:image") { e -> e?.attr("content") },
             Matcher("link[rel=icon]") { e -> e?.attr("href") },
+            Matcher("link[rel=apple-touch-icon-precomposed and size=152x152]") { e -> e?.attr("href") },
+            Matcher("link[rel=apple-touch-icon-precomposed and size=120x120]") { e -> e?.attr("href") },
             Matcher("link[rel=apple-touch-icon-precomposed and size=144x144]") { e -> e?.attr("href") },
             Matcher("link[rel=apple-touch-icon-precomposed and size=114x114]") { e -> e?.attr("href") },
+            Matcher("link[rel=apple-touch-icon-precomposed and size=76x76]") { e -> e?.attr("href") },
             Matcher("link[rel=apple-touch-icon-precomposed and size=72x72]") { e -> e?.attr("href") },
             Matcher("link[rel=apple-touch-icon-precomposed") { e -> e?.attr("href") },
             Matcher("link[rel=shortcut icon]") { e -> e?.attr("href") }
