@@ -124,7 +124,7 @@ constructor(val httpClient: CloseableHttpClient) {
      */
     fun getImageFromMetadata(head: Element, url: URI): Image {
         val rawUrl = getValueFromMetadata(head, Matchers.image, "imageUrl")
-        val imageUrl = fixUrl(rawUrl, url.scheme + "://" + url.authority, url.path)
+        val imageUrl = fixUrl(rawUrl, url.scheme, url.authority, url.path)
 
         var width = 0
         try {
@@ -159,13 +159,19 @@ constructor(val httpClient: CloseableHttpClient) {
     /**
      * Add origin to ambiguous references if necessary
      *
-     * @param   subject The filename, path + filename, or full URL to a resource
-     * @param   origin  The origin to add if the given subject is lacking
-     * @param   path    The path to add if the given subject has a relative path
+     * @param   subject     The filename, path + filename, or full URL to a resource
+     * @param   scheme      The scheme to add if the given subject is lacking
+     * @param   authority   The authority if not specified in the subject
+     * @param   path        The path to add if the given subject has a relative path
      */
-    fun fixUrl(subject: String, origin: String, path: String): URI {
+    fun fixUrl(subject: String, scheme: String, authority: String, path: String): URI {
         if (subject.isEmpty()) {
             return URI("")
+        }
+
+        val origin = scheme + "://" + authority
+        if (subject.startsWith("//")) {
+            return URI(origin + subject.replace("//", "/"))
         }
 
         if (subject.startsWith("/")) {

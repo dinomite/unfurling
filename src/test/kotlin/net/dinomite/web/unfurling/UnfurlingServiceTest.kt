@@ -19,16 +19,20 @@ import java.net.URI
 import java.util.zip.GZIPInputStream
 
 class UnfurlingServiceTest {
-    var wireMockServer: WireMockServer
-    var service: UnfurlingService
-    var origin: String
-    var path: String
+    val wireMockServer: WireMockServer
+    val service: UnfurlingService
+    val scheme: String
+    val authority: String
+    val origin: String
+    val path: String
 
     init {
         wireMockServer = WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort())
         wireMockServer.start()
-        origin = "http://localhost:${wireMockServer.port()}"
+        scheme = "http"
+        authority = "localhost:${wireMockServer.port()}"
         path = "/foo/bar"
+        origin = scheme + "://" + authority
 
         val httpClient = HttpClients.createDefault()
         service = UnfurlingService(httpClient)
@@ -233,19 +237,25 @@ class UnfurlingServiceTest {
 
     @Test
     fun fixUrl_EmptyURL_EmptyURI() {
-        assertEquals(URI(""), service.fixUrl("", origin, path))
+        assertEquals(URI(""), service.fixUrl("", scheme, authority, path))
+    }
+
+    @Test
+    fun fixUrl_AssumedSchemeURL_URIWithOrigin() {
+        val image = "/foo/bar.jpg"
+        assertEquals(URI(origin + image), service.fixUrl(image, scheme, authority, path))
     }
 
     @Test
     fun fixUrl_RootRelativeURL_URIWithOrigin() {
-        val image = "/foo/bar.jpg"
-        assertEquals(URI(origin + image), service.fixUrl(image, origin, path))
+        val image = "//foo/bar.jpg"
+        assertEquals(URI(origin + image.replace("//", "/")), service.fixUrl(image, scheme, authority, path))
     }
 
     @Test
     fun fixUrl_RelativeURL_URIWithOrigin() {
         val image = "baz.jpg"
-        assertEquals(URI(origin + path + image), service.fixUrl(image, origin, path))
+        assertEquals(URI(origin + path + image), service.fixUrl(image, scheme, authority, path))
     }
 
     private fun gzipFixture(filename: String): String {
