@@ -100,7 +100,14 @@ constructor(val httpClient: CloseableHttpClient) {
 
         val title = getTitleFromMetadata(head)
         val description = getDescriptionFromMetadata(head)
-        val image = getImageFromMetadata(head, uri)
+
+        var image = getImageFromMetadata(head, uri)
+        // Last ditch effort, use the favicon
+        if (image.isEmpty()) {
+            val origin = uri.scheme + "://" + uri.authority
+            image = Image(URI(origin + "/favicon.ico"), 0, 0)
+        }
+
         return Unfurled(uri, getCanonicalUrlFromMetadata(head), Type.TEXT, title, description, image)
     }
 
