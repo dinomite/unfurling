@@ -136,7 +136,7 @@ constructor(val httpClient: CloseableHttpClient) {
         try {
             height = getValueFromMetadata(head, Matchers.imageHeight, "imageHeight").toInt()
         } catch (e: NumberFormatException) {
-            logger.info("Image width isn't an integer", e.message)
+            logger.info("Image height isn't an integer", e.message)
         }
 
         return Image(imageUrl, width, height)
@@ -152,7 +152,7 @@ constructor(val httpClient: CloseableHttpClient) {
             }
         }
 
-        logger.info("Value not found for $thing")
+        logger.debug("Value not found for $thing")
         return ""
     }
 
@@ -179,7 +179,7 @@ constructor(val httpClient: CloseableHttpClient) {
         }
 
         if (URI(subject).scheme == null) {
-            logger.info("Relative path")
+            logger.debug("Relative path")
             return URI(origin + path + subject)
         }
 
