@@ -15,10 +15,12 @@ plugins {
     id 'maven-publish'
     id 'com.jfrog.bintray' version '1.7.2'
     id 'net.researchgate.release' version '2.4.1'
+    id 'maven'
 }
 apply plugin: 'kotlin'
 
 group 'net.dinomite.web'
+version project.version
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 
