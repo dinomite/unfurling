@@ -44,6 +44,6 @@ object Matchers {
     )
 
     val canonicalUrl = listOf(
-            Matcher("link[rel='canonical']", { e -> e?.attr("href") })
+            Matcher("link[rel=canonical]", { e -> e?.attr("href") })
     )
 }
