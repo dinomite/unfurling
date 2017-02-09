@@ -2,7 +2,7 @@ package net.dinomite.web.unfurling
 
 import java.net.URI
 
-fun URI.clone(scheme: String? = this.scheme,
+internal fun URI.clone(scheme: String? = this.scheme,
               userInfo: String? = this.userInfo,
               host: String? = this.host,
               port: Int? = this.port,
