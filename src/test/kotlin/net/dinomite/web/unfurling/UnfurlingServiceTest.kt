@@ -47,10 +47,10 @@ class UnfurlingServiceTest {
     fun unfurl() {
         val requestUrl = origin + path
         wireMockServer.stubFor(get(urlEqualTo(path))
-            .willReturn(aResponse()
-                    .withStatus(200)
-                    .withBody(gzipFixture("fixtures/medium.html.gz"))
-            )
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withBody(gzipFixture("fixtures/medium.html.gz"))
+                )
         )
 
         val unfurled = service.unfurl(URI(requestUrl))
@@ -152,6 +152,26 @@ class UnfurlingServiceTest {
 
         wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
         assertTrue(unfurled.isEmpty())
+    }
+
+    @Test
+    fun unfurl_HandlesLackingScheme() {
+        val url = "http://therealurl.com"
+        val requestUrl = origin + path
+        wireMockServer.stubFor(get(urlEqualTo(path))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withBody("<html><head>" +
+                                "<meta property=\"og:url\" content=\"http://not.therealurl.com\">" +
+                                "<link rel=\"canonical\" href=\"${url.replace("http:", "")}\">" +
+                                "</head></html>")
+                )
+        )
+
+        val unfurled = service.unfurl(URI(requestUrl))
+
+        wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
+        assertEquals(url, unfurled.canonicalUrl.toASCIIString())
     }
 
     @Test

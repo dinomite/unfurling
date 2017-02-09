@@ -101,7 +101,13 @@ constructor(val httpClient: CloseableHttpClient) {
         val title = getTitleFromMetadata(head)
         val description = getDescriptionFromMetadata(head)
         val image = getImageFromMetadata(head, uri)
-        return Unfurled(uri, getCanonicalUrlFromMetadata(head), Type.TEXT, title, description, image)
+
+        var canonicalUrl = getCanonicalUrlFromMetadata(head)
+        if (!canonicalUrl.toASCIIString().isBlank() && (canonicalUrl.scheme == null || canonicalUrl.scheme.isBlank())) {
+            canonicalUrl = canonicalUrl.clone(scheme = uri.scheme)
+        }
+
+        return Unfurled(uri, canonicalUrl, Type.TEXT, title, description, image)
     }
 
     fun getCanonicalUrlFromMetadata(head: Element): URI {
