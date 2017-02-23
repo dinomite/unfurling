@@ -111,7 +111,7 @@ constructor(val httpClient: CloseableHttpClient) {
     }
 
     fun getCanonicalUrlFromMetadata(head: Element): URI {
-        return URI(getValueFromMetadata(head, Matchers.canonicalUrl, "canonicalUrl"))
+        return parseUriSafe(getValueFromMetadata(head, Matchers.canonicalUrl, "canonicalUrl"))
     }
 
     fun getTitleFromMetadata(head: Element): String {

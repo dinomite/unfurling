@@ -44,7 +44,7 @@ class UnfurlingServiceTest {
     }
 
     @Test
-    fun unfurl() {
+    fun unfurl_Medium() {
         val requestUrl = origin + path
         wireMockServer.stubFor(get(urlEqualTo(path))
                 .willReturn(aResponse()
@@ -61,6 +61,26 @@ class UnfurlingServiceTest {
         assertEquals("https://cdn-images-1.medium.com/max/1600/1*QOMaDLcO8rExD0ctBV3BWg.png", unfurled.image.url.toString())
         assertEquals("Let’s start with the most obvious question first. This is what an “unfurl” is:", unfurled.description)
         assertEquals("https://medium.com/slack-developer-blog/everything-you-ever-wanted-to-know-about-unfurling-but-were-afraid-to-ask-or-how-to-make-your-e64b4bb9254", unfurled.canonicalUrl.toASCIIString())
+    }
+
+    @Test
+    fun unfurl_Onion() {
+        val requestUrl = origin + path
+        wireMockServer.stubFor(get(urlEqualTo(path))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withBody(gzipFixture("fixtures/onion.html.gz"))
+                )
+        )
+
+        val unfurled = service.unfurl(URI(requestUrl))
+
+        wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
+        assertEquals(requestUrl, unfurled.url.toString())
+        assertEquals("The President Of Vice", unfurled.title)
+        assertEquals("http://i.onionstatic.com/onion/5558/2/16x9/1200.jpg", unfurled.image.url.toString())
+        assertEquals("", unfurled.description)
+        assertEquals("http://www.theonion.com/interactive/biden/2013/7", unfurled.canonicalUrl.toASCIIString())
     }
 
     @Test
