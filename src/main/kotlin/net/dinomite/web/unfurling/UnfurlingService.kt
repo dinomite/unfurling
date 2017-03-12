@@ -110,15 +110,15 @@ constructor(val httpClient: CloseableHttpClient) {
         return Unfurled(uri, canonicalUrl, Type.TEXT, title, description, image)
     }
 
-    fun getCanonicalUrlFromMetadata(head: Element): URI {
+    internal fun getCanonicalUrlFromMetadata(head: Element): URI {
         return parseUriSafe(getValueFromMetadata(head, Matchers.canonicalUrl, "canonicalUrl"))
     }
 
-    fun getTitleFromMetadata(head: Element): String {
+    internal fun getTitleFromMetadata(head: Element): String {
         return getValueFromMetadata(head, Matchers.title, "title")
     }
 
-    fun getDescriptionFromMetadata(head: Element): String {
+    internal fun getDescriptionFromMetadata(head: Element): String {
         return getValueFromMetadata(head, Matchers.description, "description")
     }
 
@@ -128,7 +128,7 @@ constructor(val httpClient: CloseableHttpClient) {
      * @param   head The head element containing metadata
      * @param   url  The page's URL, used to build absolute URLs for the Image
      */
-    fun getImageFromMetadata(head: Element, url: URI): Image {
+    internal fun getImageFromMetadata(head: Element, url: URI): Image {
         val rawUrl = getValueFromMetadata(head, Matchers.image, "imageUrl")
         val imageUrl = fixUrl(rawUrl, url.scheme, url.authority, url.path)
 
@@ -148,7 +148,7 @@ constructor(val httpClient: CloseableHttpClient) {
         return Image(imageUrl, width, height)
     }
 
-    fun getValueFromMetadata(head: Element, matchers: List<Matcher>, thing: String): String {
+    internal fun getValueFromMetadata(head: Element, matchers: List<Matcher>, thing: String): String {
         for (matcher: Matcher in matchers) {
             val element = head.select(matcher.cssQuery)?.first()
 
@@ -170,7 +170,7 @@ constructor(val httpClient: CloseableHttpClient) {
      * @param   authority   The authority if not specified in the subject
      * @param   path        The path to add if the given subject has a relative path
      */
-    fun fixUrl(subject: String, scheme: String, authority: String, path: String): URI {
+    internal fun fixUrl(subject: String, scheme: String, authority: String, path: String): URI {
         if (subject.isEmpty()) {
             return URI("")
         }
