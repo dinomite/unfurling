@@ -103,8 +103,15 @@ constructor(val httpClient: CloseableHttpClient) {
         val image = getImageFromMetadata(head, uri)
 
         var canonicalUrl = getCanonicalUrlFromMetadata(head)
-        if (!canonicalUrl.toASCIIString().isBlank() && (canonicalUrl.scheme == null || canonicalUrl.scheme.isBlank())) {
-            canonicalUrl = canonicalUrl.clone(scheme = uri.scheme)
+        if (!canonicalUrl.toASCIIString().isBlank()) {
+            // Substitute original URI values for critical parts if blank
+            if (canonicalUrl.scheme == null || canonicalUrl.scheme.isBlank()) {
+                canonicalUrl = canonicalUrl.clone(scheme = uri.scheme)
+            }
+
+            if (canonicalUrl.host == null || canonicalUrl.host.isBlank()) {
+                canonicalUrl = canonicalUrl.clone(host = uri.host)
+            }
         }
 
         return Unfurled(uri, canonicalUrl, Type.TEXT, title, description, image)

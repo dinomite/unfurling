@@ -195,6 +195,25 @@ class UnfurlingServiceTest {
     }
 
     @Test
+    fun unfurl_HandlesRelativeUrl() {
+        val path = "/foo/bar/"
+        val requestUrl = origin + path
+        wireMockServer.stubFor(get(urlEqualTo(path))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withBody("<html><head>" +
+                                "<meta property=\"og:url\" content=\"$path\">" +
+                                "</head></html>")
+                )
+        )
+
+        val unfurled = service.unfurl(URI(requestUrl))
+
+        wireMockServer.verify(getRequestedFor(urlPathMatching(path)))
+        assertEquals("http://localhost/foo/bar/", unfurled.canonicalUrl.toASCIIString())
+    }
+
+    @Test
     fun getCanonicalUrl_PrefersCanonical() {
         val url = "http://therealurl.com"
         val head = Jsoup.parse("<html><head>" +
@@ -307,9 +326,15 @@ class UnfurlingServiceTest {
     }
 
     @Test
-    fun fixUrl_RootRelativeURL_URIWithOrigin() {
+    fun fixUrl_InheritSchemeAndAuthority_URIWithOrigin() {
         val image = "//foo/bar.jpg"
         assertEquals(URI(origin + image.replace("//", "/")), service.fixUrl(image, scheme, authority, path))
+    }
+
+    @Test
+    fun fixUrl_RootRelativeURL_URIWithOrigin() {
+        val path = "/foo/bar/"
+        assertEquals(URI(origin + path), service.fixUrl(path, scheme, authority, this.path))
     }
 
     @Test
