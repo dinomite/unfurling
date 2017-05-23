@@ -93,7 +93,11 @@ constructor(val httpClient: CloseableHttpClient) {
      */
     private fun buildUnfurledFromHtml(uri: URI, response: HttpResponse): Unfurled {
         val entity = response.entity ?: return Unfurled(uri)
-        val entityString = EntityUtils.toString(entity, Charsets.UTF_8) ?: return Unfurled(uri)
+        val entityString = EntityUtils.toString(entity, Charsets.UTF_8)
+
+        if (entityString == null || entityString.isEmpty()) {
+            Unfurled(uri)
+        }
 
         val document = Jsoup.parse(entityString)
         val head = document.select("head").first()
