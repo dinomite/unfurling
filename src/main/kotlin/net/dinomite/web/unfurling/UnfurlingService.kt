@@ -25,8 +25,8 @@ constructor(val httpClient: CloseableHttpClient) {
      * Unfurl a URL.  Preference is given first to Facebook Opengraph, followed by Twitter Card,
      * and finally HTML meta tags.  See Matchers for more detail.
      *
-     * @return An Unfurled with the summary information.  Any Unfurled values for which the * Matchers cannot divine
-     * will be empty.If the URI cannot be contacted successfully (HTTP status other that 200 OK), the Unfurled object
+     * @return An Unfurled with the summary information.  Any Unfurled values for which the Matchers cannot divine
+     * will be empty.  If the URI cannot be contacted successfully (HTTP status other that 200 OK), the Unfurled object
      * will have empty values.
      */
     fun unfurl(uri: URI): Unfurled {
@@ -179,7 +179,7 @@ constructor(val httpClient: CloseableHttpClient) {
      * @param   subject     The filename, path + filename, or full URL to a resource
      * @param   scheme      The scheme to add if the given subject is lacking
      * @param   authority   The authority if not specified in the subject
-     * @param   path        The path to add if the given subject has a relative path
+     * @param   path        The path to prepend if the given subject has a relative path
      */
     internal fun fixUrl(subject: String, scheme: String, authority: String, path: String): URI {
         if (subject.isEmpty()) {
