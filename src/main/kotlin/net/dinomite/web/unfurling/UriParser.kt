@@ -10,7 +10,7 @@ private val portRegex: Regex = Regex(""":([^:@\[\]]*?)$""")
 /**
  * Pares a URI with utter disregard to legality.  See Addressable::URI.parse
  */
-fun parseUri(uri: String): URI? {
+internal fun parseUri(uri: String): URI? {
     val matchResult = uriRegex.matchEntire(uri) ?: return null
 
     val scheme = matchResult.groups[2]?.value
@@ -33,7 +33,7 @@ fun parseUri(uri: String): URI? {
     return URI(scheme, null, host, port, path, query, fragment)
 }
 
-fun parseUriSafe(uri: String): URI {
+internal fun parseUriSafe(uri: String): URI {
     try {
         return parseUri(uri) ?: URI("")
     } catch (e: Exception) {

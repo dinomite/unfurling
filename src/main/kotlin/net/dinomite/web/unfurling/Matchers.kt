@@ -4,7 +4,7 @@ import org.jsoup.nodes.Element
 
 class Matcher(val cssQuery: String, val accessor: (Element?) -> String?)
 
-object Matchers {
+internal object Matchers {
     val image = listOf(
             Matcher("meta[property=og:image]") { e -> e?.attr("content") },
             Matcher("meta[name=twitter:image:src]") { e -> e?.attr("content") },
