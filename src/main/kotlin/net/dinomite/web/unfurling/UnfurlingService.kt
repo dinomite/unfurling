@@ -4,6 +4,7 @@ import com.google.common.net.MediaType
 import org.apache.http.HttpHeaders
 import org.apache.http.HttpResponse
 import org.apache.http.client.methods.HttpGet
+import org.apache.http.conn.ConnectTimeoutException
 import org.apache.http.conn.HttpHostConnectException
 import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.util.EntityUtils
@@ -48,6 +49,8 @@ constructor(val httpClient: CloseableHttpClient) {
         } catch (e: SSLHandshakeException) {
             logger.warn("SSL error trying to get summary: " + e.message)
         } catch (e: SocketTimeoutException) {
+            logger.warn("Timeout trying to get summary: " + e.message)
+        } catch (e: ConnectTimeoutException) {
             logger.warn("Timeout trying to get summary: " + e.message)
         } catch (e: HttpHostConnectException) {
             logger.warn("Unable to connect to server trying to get summary: " + e.message)
