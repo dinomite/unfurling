@@ -56,8 +56,7 @@ constructor(val httpClient: CloseableHttpClient) {
             logger.warn("Unable to connect to server trying to get summary: " + e.message)
         } catch (e: Exception) {
             logger.warn("Failed to handle exception case: " + e.message)
-        }
-        finally {
+        } finally {
             MDC.remove("mdc")
         }
 
