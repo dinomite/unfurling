@@ -54,6 +54,8 @@ constructor(val httpClient: CloseableHttpClient) {
             logger.warn("Timeout trying to get summary: " + e.message)
         } catch (e: HttpHostConnectException) {
             logger.warn("Unable to connect to server trying to get summary: " + e.message)
+        } catch (e: Exception) {
+            logger.warn("Failed to handle exception case: " + e.message)
         } finally {
             MDC.remove("mdc")
         }
@@ -99,7 +101,7 @@ constructor(val httpClient: CloseableHttpClient) {
         val entityString = EntityUtils.toString(entity, Charsets.UTF_8)
 
         if (entityString == null || entityString.isEmpty()) {
-            Unfurled(uri)
+            return Unfurled(uri)
         }
 
         val document = Jsoup.parse(entityString)

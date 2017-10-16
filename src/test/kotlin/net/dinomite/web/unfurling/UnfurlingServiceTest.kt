@@ -175,6 +175,25 @@ class UnfurlingServiceTest {
     }
 
     @Test
+    fun unfurl_PdfFallsbackToUrl() {
+        val filename = "menu.pdf"
+        val fullPath = path + "/$filename"
+        val requestUrl = origin + fullPath
+        wireMockServer.stubFor(get(urlEqualTo(fullPath))
+                .willReturn(aResponse()
+                        .withHeader(HttpHeaders.CONTENT_TYPE, "application/pdf")
+                        .withStatus(200)
+                        .withBodyFile(filename)
+                )
+        )
+
+        val unfurled = service.unfurl(URI(requestUrl))
+
+        wireMockServer.verify(getRequestedFor(urlEqualTo(fullPath)))
+        assertEquals(requestUrl, unfurled.url.toString())
+    }
+
+    @Test
     fun unfurl_HandlesLackingScheme() {
         val url = "http://therealurl.com"
         val requestUrl = origin + path
