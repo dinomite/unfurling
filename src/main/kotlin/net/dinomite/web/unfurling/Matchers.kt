@@ -16,8 +16,7 @@ internal object Matchers {
             Matcher("link[rel=apple-touch-icon-precomposed and size=114x114]") { e -> e?.attr("href") },
             Matcher("link[rel=apple-touch-icon-precomposed and size=76x76]") { e -> e?.attr("href") },
             Matcher("link[rel=apple-touch-icon-precomposed and size=72x72]") { e -> e?.attr("href") },
-            Matcher("link[rel=apple-touch-icon-precomposed") { e -> e?.attr("href") },
-            Matcher("link[rel=shortcut icon]") { e -> e?.attr("href") }
+            Matcher("link[rel=apple-touch-icon-precomposed") { e -> e?.attr("href") }
     )
 
     val imageWidth = listOf(
