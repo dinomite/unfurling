@@ -17,5 +17,5 @@ println(unfurled.description) // Grand High Figurehead, Church of Empirical Evid
 
 # Logging
 
-This module uses the Mapped Diagnostic Context (MDC) key "mdc" to provide the URI for which failures occur.  Add
-`%X{mdc}` to your logging pattern to see this information.
+This module uses the [Mapped Diagnostic Context (MDC)](https://logback.qos.ch/manual/mdc.html) key "unfurling-uri" to
+provide the URI for which failures occur.  Add the MDC, `%mdc`, to your logging pattern to see this information.

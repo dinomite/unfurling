@@ -33,7 +33,7 @@ constructor(val httpClient: CloseableHttpClient) {
     fun unfurl(uri: URI): Unfurled {
         val get = HttpGet(uri)
         try {
-            MDC.put("mdc", uri.toString())
+            MDC.put("unfurling-uri", uri.toString())
             httpClient.execute(get).use { response ->
                 if (response.statusLine.statusCode != 200) {
                     return Unfurled(uri)
@@ -57,7 +57,7 @@ constructor(val httpClient: CloseableHttpClient) {
         } catch (e: Exception) {
             logger.warn("Failed to handle exception case: " + e.message)
         } finally {
-            MDC.remove("mdc")
+            MDC.remove("unfurling-uri")
         }
 
         return Unfurled(uri)
